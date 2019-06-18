@@ -17,3 +17,7 @@ export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.scripts/"
 # Add special go paths -- I know it is not idiomatic,
 # but I don't operate that way google.
 export GOPATH=$HOME/.go/
+
+# Less does not like symlinks, so the the history file needs to
+# be pointed at directly
+export LESSHISTFILE="${HOME}/.dotfiles/less/.lesshst"
