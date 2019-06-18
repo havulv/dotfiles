@@ -1,0 +1,6 @@
+[Playlist]
+
+NumberOfEntries=1
+File1=http://live-aacplus-64.kexp.org/kexp64.aac
+Title1=KEXP 90.3 FM
+Length1=-1

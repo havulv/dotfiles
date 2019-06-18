@@ -4,16 +4,21 @@
 
 # Directory bans
 .cache/
+
+# Duplication
 go/
+wallpapers/.wallpapers/
+
+# Personal
 wiki/
-local/
 sound/
 python/
 mozilla/
+local/
+vim/.vim/
+config/.config/mpd/db
 config/.config/pulse/
 config/.config/transmission/
-config/.config/mpd/db
-vim/.vim/
 
 # Filetype bans
 *.tdb

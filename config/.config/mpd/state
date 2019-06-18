@@ -1,0 +1,24 @@
+sw_volume: 76
+audio_device_state:1:pulse audio
+audio_device_state:0:Local Music Player Daemon
+audio_device_state:1:FIFO visualizer
+state: pause
+current: 0
+time: 14.581000
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 01 No Face.flac
+1:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 02 The Bug Collector.flac
+2:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 03 Jo.flac
+3:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 04 Worth It.flac
+4:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 05 Show You a Body.flac
+5:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 06 Untitled God Song.flac
+6:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 07 Oom Sha La La.flac
+7:HALEY HEYNDERICKX - I Need to Start a Garden/HALEY HEYNDERICKX - I Need to Start a Garden - 08 Drinking Song.flac
+playlist_end
