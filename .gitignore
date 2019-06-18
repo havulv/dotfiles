@@ -1,0 +1,28 @@
+
+# Categorical bans
+**/.git/**
+
+# Directory bans
+.cache/
+go/
+wiki/
+local/
+sound/
+python/
+mozilla/
+config/.config/pulse/
+config/.config/transmission/
+config/.config/mpd/db
+vim/.vim/
+
+# Filetype bans
+*.tdb
+*.log
+*.torrent
+*.resume
+credentials.*
+
+# File bans
+vim/.viminfo
+less/.lesshst
+bash/.bash_history
