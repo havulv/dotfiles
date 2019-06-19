@@ -17,6 +17,8 @@ mozilla/
 local/
 vim/.vim/
 config/.config/mpd/db
+config/.config/mpd/pid
+config/.config/mpd/state
 config/.config/pulse/
 config/.config/transmission/
 

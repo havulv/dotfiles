@@ -1,0 +1,2 @@
+# Ignore Xauthority as this is auto generated
+.Xauthority
