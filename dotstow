@@ -15,15 +15,19 @@ stow_package() {
                 refresh=0
             fi
         done
-        break
     done
+
+    sdir="-d $dotfile_name"
+    if [[ "$(pwd)/" == "$dotfiles" ]]; then
+        sdir=""
+    fi 
 
     if [[ $refresh -eq 0 ]]; then
         echo "Restowing $1..."
-        stow -t $root -d $dotfile_name -R $1
+        stow -t $root $sdir -R $1
     else
         echo "Stowing $1..."
-        stow -t $root -d $dotfile_name -S $1
+        stow -t $root $sdir -S $1
     fi
 }
 
