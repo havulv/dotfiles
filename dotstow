@@ -28,6 +28,10 @@ stow_package() {
 }
 
 
+if ! hash stow; then
+    pacman -Syu stow
+fi
+
 if [[ -d $dotfiles ]]; then
     if [[ $# -gt 0 ]]; then
         if [[ -d $dotfiles$1 ]]; then
