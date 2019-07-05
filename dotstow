@@ -21,7 +21,10 @@ stow_package() {
     if [[ "$(pwd)/" == "$dotfiles" ]]; then
         sdir=""
     fi 
-
+    
+    # Chdir to avoid some stow errors
+    curdir=$(pwd)
+    cd $HOME
     if [[ $refresh -eq 0 ]]; then
         echo "Restowing $1..."
         stow -t $root $sdir -R $1
@@ -29,6 +32,7 @@ stow_package() {
         echo "Stowing $1..."
         stow -t $root $sdir -S $1
     fi
+    cd $curdir
 }
 
 
