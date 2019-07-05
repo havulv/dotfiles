@@ -1,0 +1,43 @@
+#!/bin/bash
+
+data=$HOME/.data
+cstpkg=$HOME/.scripts/cstpkg
+os=$(uname -s)
+ver=$(uname -r | cut -d '-' -f4)
+
+if [[ "$os" == "Linux" && "$ver" == "ARCH" ]]; then
+    if [[ -f "$data/yaydata" ]]; then
+        $cstpkg init yay
+    else
+        echo "yaydata does not exist"
+    fi
+elif [[ "$os" == "Darwin" ]]; then
+    if [[ -f "$data/brewdata" ]]; then
+        $cstpkg init brew
+    else
+        echo "brewdata does not exit"
+    fi
+fi
+
+
+if hash vim ; then
+    if [[ -f "$data/vimdata" ]]; then
+        $cstpkg init vim
+    else
+        echo  "vimdata does not exist"
+    fi
+fi
+
+
+if hash pip ; then
+    pyver=$(python --version 2>&1 | cut -d ' ' -f2 | cut -d '.' -f1) 
+    if [[ "$pyver" == "3" ]]; then
+        if [[ -f "$data/pipdata" ]]; then
+            $cstpkg init pipdata
+        fi
+    elif [[ "$pyver" == "2" ]]; then
+        if [[ -f "$data/pip2data" ]]; then
+            install pip2 data
+        fi
+    fi
+fi
