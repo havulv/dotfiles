@@ -1,0 +1,194 @@
+#! /bin/sh
+
+data_dir=$HOME/.data
+
+
+update_vim_data() {
+    if hash vim ; then
+        echo "Updating vim data..."
+        vim_data=$data_dir/vimdata
+
+        if [[ -f $vim_data ]]; then
+            rm $vim_data && touch $vim_data
+        else
+            touch $vim_data
+        fi
+
+        vim_bundle=$HOME/.vim/bundle
+        for pkg in $(ls $vim_bundle); do
+            git --git-dir $vim_bundle/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $vim_data
+        done
+    else
+        echo "Vim not installed."
+    fi
+}
+
+
+install_vim_data() {
+    if hash vim ; then
+       vim_data=$data_dir/vimdata 
+       vim_bundle=$HOME/.vim/bundle
+
+       if [[ -f $vim_data ]]; then
+           if [[ -d $vim_bundle ]]; then
+               for bundle in $(cat $vim_data); do
+                    git clone $bundle $vim_bundle/
+               done
+           else
+               echo "It looks like Vim was improperly installed. $vim_bundle does not exist."
+           fi
+       else
+           echo "$vim_data does not exist. Cannot install vim packages."
+       fi
+    else
+        pacman -Syu --noconfirm vim
+        install_vim_data
+    fi
+}
+
+
+update_pip_data() {
+    if hash pip ; then
+        echo "Updating pip data..."
+
+        pip_data=$data_dir/pipdata
+
+        if [[ -f $pip_data ]]; then
+            rm $pip_data && touch $pip_data
+        else
+            touch $pip_data
+        fi
+
+        pip list --format freeze >> $pip_data
+    else
+        echo "pip not installed."
+    fi
+}
+
+
+install_pip_data() {
+    if hash pip ; then
+        pip_data=$data_dir/pipdata
+
+        if [[ -f $pip_data ]]; then
+            pip install -r $pip_data
+        else
+            echo "$pip_data does not exist. Cannot install pip packages."
+        fi
+    else
+        pacman -Syu --noconfirm python-pip
+        install_pip_data
+    fi
+}
+
+
+update_yay_data() {
+    if hash yay ; then
+        echo "Updating yay data..."
+        yay_data=$data_dir/yaydata
+
+        if [[ -f $yay_data ]]; then
+            rm $yay_data && touch $yay_data
+        else
+            touch $yay_data
+        fi
+
+        yay -Q >> $yay_data
+    else
+        echo "yay not installed."
+    fi
+}
+
+
+# Requires root password for installation
+install_yay_data() {
+    if hash yay ; then
+        yay_data=$data_dir/yaydata
+
+        if [[ -f $yay_data ]]; then
+            for pkg in $(cat $yay_data | awk -F ' ' '{print $1}'); do
+                yay -Syu --noconfirm $pkg 
+            done
+        else
+            echo "$yay_data does not exist. Cannot install yay packages."
+        fi
+    else
+        pacman -Syu --noconfirm yay
+        install_yay_data
+    fi
+}
+
+select_update() {
+    case $1 in
+        "pip")
+            update_pip_data
+            ;;
+        "yay")
+            update_yay_data
+            ;;
+        "vim")
+            update_vim_data
+            ;;
+        *)
+            echo "$1 is not managed by this script."
+            ;;
+    esac
+}
+
+select_install() {
+    case $1 in
+        "pip")
+            install_pip_data
+            ;;
+        "yay")
+            install_yay_data
+            ;;
+        "vim")
+            install_vim_data
+            ;;
+        *)
+            echo "$1 is not managed by this script."
+            ;;
+    esac
+}
+
+update_all() {
+    update_yay_data
+    update_pip_data
+    update_vim_data
+}
+
+
+install_all() {
+    install_yay_data
+    install_pip_data
+    install_vim_data
+}
+
+if [[ -d $data_dir ]]; then
+    if [[ $# -eq 0 ]]; then
+        update_all
+    else
+        case $1 in 
+            "update")
+                if [[ $# -gt 1 ]]; then
+                    select_update $2
+                else
+                    update_all
+                fi
+                ;;
+            "init")
+                if [[ $# -gt 1 ]]; then
+                    select_install $2
+                else
+                    install_all
+                fi
+                ;;
+            *)
+                echo "The only available options are 'update' and 'install' for pip, yay, and vim."
+                ;;
+        esac
+    fi
+else
+    echo "$data_dir does not exist. Please create it and/or stow it."
+fi
