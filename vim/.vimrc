@@ -74,7 +74,7 @@ let mapleader=","
 nnoremap <leader>m :silent make\|redraw!\|cw<CR>
 nnoremap <leader>h :A<CR>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>et :exec ":vsp /Users/dblack/notes/vim/" . strftime('%m-%d-%y') . ".md"<CR>
+nnoremap <leader>et :exec ":vsp $HOME/.wiki/Daily/" . strftime('%m-%d-%y') . ".wiki"<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>l :call <SID>ToggleNumber()<CR>
@@ -88,9 +88,20 @@ nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>ts :TestSuite<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>r :call <SID>RunFile()<CR>
-nnoremap <leader>b :call <SID>BuildFile()<CR>
 nnoremap <leader>p :Goyo<CR>
 vnoremap <leader>y "+y
+
+" Pane Switching Remaps:
+" tnoremap <Esc> <C-\><C-n>
+" tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+tnoremap <C-W><C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-W><C-l> <C-\><C-N><C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 " }}}
 " Powerline {{{
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
@@ -180,7 +191,14 @@ function! <SID>CleanFile()
     let @/=_s
     call cursor(l, c)
 endfunc
+
+" Debugging: {{{
+function! RemoveDebugs()
+    :g/import pdb\|pdb\.set_trace()/de
+endfunction
+au FileType python nmap <leader>b oimport pdb; pdb.set_trace()<esc>
+au FileType python nnoremap <silent> <leader>B :call RemoveDebugs()<CR>
 " }}}
-"
+" }}}
 
 " vim:foldmethod=marker:foldlevel=0
