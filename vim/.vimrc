@@ -6,6 +6,8 @@ set nocompatible "Explicitly set non-Vi compatiability
 syntax enable           " enable syntax processing
 colorscheme badwolf
 " Font Settings{{{
+set encoding=utf-8
+
 if has("gui_running")
     set guioptions-=m   "remove menu bar
     set guioptions-=T   "remove Toolbar
@@ -23,6 +25,12 @@ endif
 " Pathogen {{{
 execute pathogen#infect()
 " }}}
+" Deoplete {{{
+execute deoplete#enable()
+
+" Options
+" call deoplete#max_list=100
+
 " }}}
 " Vimwiki, Clipboard, and Viminfo {{{
 set backspace=indent,eol,start
