@@ -31,9 +31,12 @@ install_vim_data() {
 
        if [[ -f $vim_data ]]; then
            if [[ -d $vim_bundle ]]; then
+               curdir=$(pwd)
+               cd $vim_bundle
                for bundle in $(cat $vim_data); do
-                    git clone $bundle $vim_bundle/
+                    git clone $bundle
                done
+               cd $curdir
            else
                echo "It looks like Vim was improperly installed. $vim_bundle does not exist."
            fi
