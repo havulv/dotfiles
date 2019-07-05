@@ -1,7 +1,0 @@
-#! /bin/sh
-
-if [[ $#  -eq 0 ]]; then
-    echo "No info file specified"
-else
-    vim -c "Vinfo $1" -c 'silent only'
-fi
