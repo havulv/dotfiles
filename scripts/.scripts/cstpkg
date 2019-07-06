@@ -187,6 +187,13 @@ if [[ -d $data_dir ]]; then
                     install_all
                 fi
                 ;;
+            "install")
+                if [[ $# -gt 1 ]]; then
+                    select_install $2
+                else
+                    install_all
+                fi
+                ;;
             *)
                 echo "The only available options are 'update' and 'install' for pip, yay, and vim."
                 ;;
