@@ -34,3 +34,4 @@ vim/.viminfo
 less/.lesshst
 bash/.bash_history
 feh/.fehbg
+config/.config/dconf/user
