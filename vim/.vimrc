@@ -229,7 +229,7 @@ endfunc
 function! RemoveDebugs()
     :g/import pdb\|pdb\.set_trace()/de
 endfunction
-au FileType python nmap <leader>b oimport pdb; pdb.set_trace()<esc>
+au FileType python nmap <leader>b oimport pdb\r pdb.set_trace()<esc>
 au FileType python nnoremap <silent> <leader>B :call RemoveDebugs()<CR>
 " }}}
 " }}}
