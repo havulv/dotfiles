@@ -14,6 +14,9 @@ PS1='[\u@\h \W]\$ '
 # Add a script directory to the PATH
 export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.scripts/"
 
+# Add scripts to the bash env
+source $(which virtualenvwrapper.sh)
+
 # Add special go paths -- I know it is not idiomatic,
 # but I don't operate that way google.
 export GOPATH=$HOME/.go/
