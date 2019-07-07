@@ -30,7 +30,6 @@ execute deoplete#enable()
 
 " Options
 " call deoplete#max_list=100
-
 " }}}
 " Vimwiki, Clipboard, and Viminfo {{{
 set backspace=indent,eol,start
@@ -79,25 +78,51 @@ vnoremap B ^
 " }}}
 " Leader Shortcuts {{{
 let mapleader=","
+
+" Vim stuff
 nnoremap <leader>m :silent make\|redraw!\|cw<CR>
 nnoremap <leader>h :A<CR>
+
+" Vimrc editing
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>et :exec ":vsp $HOME/.wiki/Daily/" . strftime('%m-%d-%y') . ".wiki"<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" Wiki editing
+nnoremap <leader>et :exec ":vsp $HOME/.wiki/Daily/" . strftime('%m-%d-%y') . ".wiki"<CR>
+
+" Toggle line numbering
 nnoremap <leader>l :call <SID>ToggleNumber()<CR>
-nnoremap <leader><space> :noh<CR>
-nnoremap <leader>s :mksession<CR>
-nnoremap <leader>a :Ag 
-nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 nnoremap <leader>1 :set number!<CR>
+
+" Remove highlighting
+nnoremap <leader><space> :noh<CR>
+
+" Make a sesion
+nnoremap <leader>s :mksession<CR>
+
+" Edit the bashrc
+nnoremap <leader>ez :vsp ~/.bashrc<CR>
+
+" Check for errors
+nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
+
+" Go documentation from vim-go
 nnoremap <leader>d :GoDoc 
+
+" Testing
 nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>ts :TestSuite<CR>
 nnoremap <leader>tl :TestLast<CR>
 nnoremap <leader>r :call <SID>RunFile()<CR>
+
+" Goyo
 nnoremap <leader>p :Goyo<CR>
+
+" Copy into the + register on highlight
 vnoremap <leader>y "+y
+
+" Toggle autocomplete off
+nnoremap <leader>ac :call deoplete#disable()
 
 " Pane Switching Remaps:
 " tnoremap <Esc> <C-\><C-n>
