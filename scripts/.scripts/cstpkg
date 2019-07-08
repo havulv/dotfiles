@@ -102,22 +102,94 @@ update_yay_data() {
     fi
 }
 
-
 # Requires root password for installation
 install_yay_data() {
     if hash yay ; then
         yay_data=$data_dir/yaydata
-
         if [[ -f $yay_data ]]; then
-            for pkg in $(cat $yay_data | awk -F ' ' '{print $1}'); do
-                yay -Syu --noconfirm $pkg 
+            cur_installed=$(yay -Q | cut -d ' ' -f1)
+            for pkg in $(cat $yay_data); do
+                name=$($pkg | cut -d ' ' -f1)
+                version=$($pkg | cut -d ' ' -f2)
+
+                installed=False
+                for cur_pkg in $cur_installed; do
+                    if [[ "$cur_pkg" == "$name" ]]; then
+                        installed=True
+                    fi
+                done
+
+                if ! $installed ; then
+                    # Arch is a rolling release so you really `shouldn't`
+                    # specify the version
+                    yay -Syu --noconfirm $name
+                fi
             done
         else
             echo "$yay_data does not exist. Cannot install yay packages."
         fi
     else
+        # I feel like this will fuck me over if I am not careful
+        echo "yay not installed. Installing..."
         pacman -Syu --noconfirm yay
         install_yay_data
+    fi
+}
+
+update_brew_data() {
+    if [[ "$(uname -s)"  == "Darwin" ]]; then
+        if hash brew ; then
+            echo "Updating brew data..."
+            brew_data=$data_dir/brewdata
+
+            if [[ -f $brew_data ]]; then
+                rm $brew_data && touch $brew_data
+            else
+                touch $brew_data
+            fi
+
+            brew list -1 --versions >> $brew_data
+        else
+            echo "Brew not installed"
+        fi
+    else
+        echo "Not Darwin OS -- skipping brew..."
+    fi
+}
+
+install_brew_data() {
+    if [[ "$(uname -s)"  == "Darwin" ]]; then
+        if hash brew ; then
+            brew_data=$data_dir/brewdata
+
+            if [[ -f $brew_data ]]; then
+                cur_installed=$(brew list -1)
+
+                for pkg in $(cat $brew_data); do
+                    name=$($pkg | cut -d ' ' -f1)
+                    version=$($pkg | cut -d ' ' -f2)
+
+                    installed=False
+                    for cur_pkg in $cur_installed; do
+                        if [[ "$cur_pkg" == "$name" ]]; then
+                            installed=True
+                        fi
+                    done
+
+                    if ! $installed ; then
+                        brew install "$name@$version"
+                    fi
+                done
+            else
+                echo "$brew_data does not exist. Cannot install brew formulae."
+            fi
+        else
+            # I feel like this will fuck me over if I am not careful
+            echo "Brew not installed. Installing..."
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            install_brew_data
+        fi
+        echo "Not Darwin OS -- skipping brew..."
     fi
 }
 
@@ -160,7 +232,6 @@ update_all() {
     update_pip_data
     update_vim_data
 }
-
 
 install_all() {
     install_yay_data
