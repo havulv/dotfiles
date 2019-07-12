@@ -180,32 +180,34 @@ install_vim_data() {
 update_pip_data() {
     if hash pip ; then
         PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
-        gopip=False
+        PIP3=False
 
-        if [[ "$(PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
+        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
             if hash pip3; then
-                gopip=pip3
+                PIP3=True
             else
                 echo "Python 3.X is not installed. Run \'update pip2\' to record packages."
                 return 1
             fi
-        elif [[ "$(PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            gopip=pip
+        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
+            PIP3=False
         fi
 
 
-        if $gopip ; then
-            echo "Updating pip data..."
+        echo "Updating pip data..."
 
-            pip_data=$data_dir/pipdata
+        pip_data=$data_dir/pipdata
 
-            if [[ -f $pip_data ]]; then
-                rm $pip_data && touch $pip_data
-            else
-                touch $pip_data
-            fi
+        if [[ -f $pip_data ]]; then
+            rm $pip_data && touch $pip_data
+        else
+            touch $pip_data
+        fi
 
-            $gopip list --format freeze >> $pip_data
+        if [[ "$PIP3" == True ]]; then
+            pip3 list --format freeze >> $pip_data
+        else
+            pip list --format freeze >> $pip_data
         fi
     else
         echo "pip not installed."
@@ -216,23 +218,26 @@ update_pip_data() {
 install_pip_data() {
     if hash pip ; then
         PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
-        gopip=False
+        pip_data=$data_dir/pipdata
+        PIP3=False
 
-        if [[ "$(PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
+        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
             if hash pip3; then
-                gopip=pip3
+                PIP3=True
             else
                 echo "Python 3.X is not installed. Run \'install pip2\' to install packages."
                 return 1
             fi
-        elif [[ "$(PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            gopip=pip
+        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
+            PIP3=False
         fi
 
-        pip_data=$data_dir/pipdata
-
         if [[ -f $pip_data ]]; then
-            $gopip install -r $pip_data
+            if [[ "$PIP3" == "True" ]]; then
+                pip3 install -r $pip_data
+            else
+                pip install -r $pip_data
+            fi
         else
             echo "$pip_data does not exist. Cannot install pip packages."
         fi
@@ -246,13 +251,13 @@ install_pip_data() {
 update_pip2_data() {
     if hash pip ; then
         PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
-        gopip=False
+        PIP2=False
 
-        if [[ "$(PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
-            gopip=pip
-        elif [[ "$(PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            if hash pip2; then
-                gopip=pip2
+        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
+            PIP2=False
+        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
+            if hash pip2 > /dev/null 2>&1 ; then
+                pip2=True
             else
                 echo "Python 2.X is not installed. Run \`update pip\` to record packages."
                 return 1
@@ -260,18 +265,20 @@ update_pip2_data() {
         fi
 
 
-        if $gopip ; then
-            echo "Updating pip data..."
+        echo "Updating pip data..."
 
-            pip_data=$data_dir/pip2data
+        pip_data=$data_dir/pip2data
 
-            if [[ -f $pip_data ]]; then
-                rm $pip_data && touch $pip_data
-            else
-                touch $pip_data
-            fi
+        if [[ -f $pip_data ]]; then
+            rm $pip_data && touch $pip_data
+        else
+            touch $pip_data
+        fi
 
-            $gopip list --format freeze >> $pip_data
+        if [[ "$PIP2" == "True" ]]; then
+            pip2 list --format freeze >> $pip_data
+        else
+            pip list --format freeze >> $pip_data
         fi
     else
         echo "pip2 not installed."
@@ -282,13 +289,14 @@ update_pip2_data() {
 install_pip2_data() {
     if hash pip ; then
         PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
-        gopip=False
+        pip_data=$data_dir/pip2data
+        PIP2=False
 
-        if [[ "$(PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
-            gopip=pip
-        elif [[ "$(PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            if hash pip2; then
-                gopip=pip2
+        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
+            PIP2=False
+        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
+            if hash pip2 > /dev/null 2>&1 ; then
+                PIP2=True
             else
                 echo "Python 2.X is not installed. Run \`install pip\` to install 3.X packages."
                 return 1
@@ -296,15 +304,15 @@ install_pip2_data() {
         fi
 
 
-        if $gopip ; then
-     
-            pip_data=$data_dir/pip2data
+        if [[ -f $pip_data ]]; then
 
-            if [[ -f $pip_data ]]; then
-                $gopip install -r $pip_data
+            if [[ "$PIP2" == "True" ]]; then
+                pip2 install -r $pip_data
             else
-                echo "$pip_data does not exist. Cannot install pip packages."
+                pip install -r $pip_data
             fi
+        else
+            echo "$pip_data does not exist. Cannot install pip packages."
         fi
 #    else # I don't want to install pip2 by default. That shit whomps
 #        pacman -Syu --noconfirm python2-pip
