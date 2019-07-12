@@ -2,6 +2,123 @@
 
 data_dir=$HOME/.data
 
+install_srht_data() {
+   echo "Please make sure that your SSH keys are up to date with sr.ht/~sea_wulf"
+   srht_data=$data_dir/srhtdata 
+   srhtdir=$HOME/srht
+
+   if ! [[ -d $srhtdir ]]; then
+       mkdir $srhtdir
+   fi
+
+   if [[ -f $srht_data ]]; then
+       curdir=$(pwd)
+       cd $srhtdir
+       for prj in $(cat $srht_data); do
+            git clone $prj
+       done
+       cd $curdir
+   else
+       echo "$srht_data does not exist. Cannot install srht projects."
+   fi
+}
+
+update_srht_data() {
+    echo "Updating srht data..."
+    srht_data=$data_dir/srhtdata
+    if [[ -f $srht_data ]]; then
+        rm $srht_data && touch $srht_data
+    else
+        touch $srht_data
+    fi
+
+    srhtdir=$HOME/gitlab
+    for pkg in $(ls $srhtdir); do
+        if [[ -d $srhtdir/$pkg/.git ]]; then
+            git --git-dir $srhtdir/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $srht_data
+        fi
+    done
+}
+
+
+install_gitlab_data() {
+   echo "Please make sure that your SSH keys are up to date with gitlab.com/jandersen7"
+   gitlab_data=$data_dir/gitlabdata 
+   gldir=$HOME/gitlab
+
+   if ! [[ -d $gldir ]]; then
+       mkdir $gldir
+   fi
+
+   if [[ -f $gitlab_data ]]; then
+       curdir=$(pwd)
+       cd $gldir
+       for prj in $(cat $gitlab_data); do
+            git clone $prj
+       done
+       cd $curdir
+   else
+       echo "$gitlab_data does not exist. Cannot install gitlab projects."
+   fi
+
+}
+
+update_gitlab_data() {
+    echo "Updating gitlab data..."
+    gitlab_data=$data_dir/gitlabdata
+    if [[ -f $gitlab_data ]]; then
+        rm $gitlab_data && touch $gitlab_data
+    else
+        touch $gitlab_data
+    fi
+
+    gldir=$HOME/gitlab
+    for pkg in $(ls $gldir); do
+        if [[ -d $gldir/$pkg/.git ]]; then
+            git --git-dir $gldir/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $gitlab_data
+        fi
+    done
+}
+
+
+install_github_data() {
+   echo "Please make sure that your SSH keys are up to date with github.com/jandersen7"
+   github_data=$data_dir/githubdata 
+   ghdir=$HOME/github
+
+   if ! [[ -d $ghdir ]]; then
+       mkdir $ghdir
+   fi
+
+   if [[ -f $github_data ]]; then
+       curdir=$(pwd)
+       cd $ghdir
+       for prj in $(cat $github_data); do
+            git clone $prj
+       done
+       cd $curdir
+   else
+       echo "$github_data does not exist. Cannot install github projects."
+   fi
+}
+
+update_github_data() {
+
+    echo "Updating github data..."
+    github_data=$data_dir/githubdata
+    if [[ -f $github_data ]]; then
+        rm $github_data && touch $github_data
+    else
+        touch $github_data
+    fi
+
+    ghdir=$HOME/github
+    for pkg in $(ls $ghdir); do
+        if [[ -d $ghdir/$pkg/.git ]]; then
+            git --git-dir $ghdir/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $github_data
+        fi
+    done
+}
 
 update_vim_data() {
     if hash vim ; then
@@ -322,6 +439,15 @@ select_update() {
         "brew")
             update_brew_data
             ;;
+        "github")
+            update_github_data
+            ;;
+        "gitlab")
+            update_gitlab_data
+            ;;
+        "srht")
+            update_srht_data
+            ;;
         *)
             echo "$1 is not managed by this script."
             ;;
@@ -345,6 +471,15 @@ select_install() {
         "brew")
             install_brew_data
             ;;
+        "github")
+            install_github_data
+            ;;
+        "gitlab")
+            install_gitlab_data
+            ;;
+        "srht")
+            install_srht_data
+            ;;
         *)
             echo "$1 is not managed by this script."
             ;;
@@ -357,12 +492,19 @@ update_all() {
     update_pip2_data
     update_vim_data
     update_brew_data
+    update_gitlab_data
+    update_github_data
+    update_srht_data
 }
 
 install_all() {
     install_yay_data
     install_pip_data
     install_vim_data
+    install_brew_data
+    install_gitlab_data
+    install_github_data
+    install_srht_data
 }
 
 if [[ -d $data_dir ]]; then
