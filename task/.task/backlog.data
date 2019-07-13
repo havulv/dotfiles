@@ -59,3 +59,4 @@
 {"description":"Buy eye lag bolts","entry":"20190713T194123Z","modified":"20190713T194123Z","project":"Home","status":"pending","tags":["workstation"],"uuid":"7f6f29f7-827c-4274-bf1b-6b585e59e75f"}
 {"description":"Buy a shower curtain","end":"20190713T201724Z","entry":"20190712T185306Z","modified":"20190713T201724Z","project":"Home","status":"completed","tags":["bathroom"],"uuid":"7389fa68-fed7-46c3-a267-f26bb8e10e02"}
 {"description":"Buy a shower mat","end":"20190713T201724Z","entry":"20190712T185313Z","modified":"20190713T201724Z","project":"Home","status":"completed","tags":["bathroom"],"uuid":"4924f4dc-31cc-49a1-95d3-522a8f9758dc"}
+{"description":"Clean the toilet","end":"20190713T224949Z","entry":"20190712T185255Z","modified":"20190713T224949Z","status":"completed","tags":["bathroom","cleaning"],"uuid":"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"}

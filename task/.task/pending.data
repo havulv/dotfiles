@@ -23,7 +23,6 @@
 [description:"Buy some dish rags" entry:"1562957429" modified:"1562957429" project:"Home" status:"pending" tags:"kitchen" uuid:"100846c4-4d9d-4f89-9570-1666096b3fb3"]
 [description:"Purchase some plants for the home" entry:"1562957453" modified:"1562957453" project:"Home" status:"pending" tags:"plants" uuid:"07a53ee2-e64c-4d29-9212-48c8bdcb71eb"]
 [description:"Clean the kitchen countertops and try to remove the stains" entry:"1562957475" modified:"1562957475" status:"pending" tags:"kitchen,cleaning" uuid:"fc3590cb-c477-4364-a8b3-3b5ec9debf98"]
-[description:"Clean the toilet" entry:"1562957575" modified:"1562957575" status:"pending" tags:"bathroom,cleaning" uuid:"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"]
 [description:"Buy more towels" entry:"1562957598" modified:"1562957598" project:"Home" status:"pending" tags:"bathroom" uuid:"f595170f-38bf-46ff-8e4c-da36d97721b1"]
 [description:"Hang up some art on the walls" entry:"1562957624" modified:"1562957624" project:"Home" status:"pending" tags:"art" uuid:"173d8165-ca1e-4775-a602-4210a2c9e583"]
 [description:"Respond to personal emails" entry:"1562957634" modified:"1562957634" status:"pending" tags:"email" uuid:"4938f787-56f0-4c74-9915-33e9d80ca9ba"]

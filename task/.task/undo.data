@@ -187,3 +187,7 @@ time 1563049044
 old [description:"Buy a shower mat" entry:"1562957593" modified:"1562957593" project:"Home" status:"pending" tags:"bathroom" uuid:"4924f4dc-31cc-49a1-95d3-522a8f9758dc"]
 new [description:"Buy a shower mat" end:"1563049044" entry:"1562957593" modified:"1563049044" project:"Home" status:"completed" tags:"bathroom" uuid:"4924f4dc-31cc-49a1-95d3-522a8f9758dc"]
 ---
+time 1563058189
+old [description:"Clean the toilet" entry:"1562957575" modified:"1562957575" status:"pending" tags:"bathroom,cleaning" uuid:"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"]
+new [description:"Clean the toilet" end:"1563058189" entry:"1562957575" modified:"1563058189" status:"completed" tags:"bathroom,cleaning" uuid:"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"]
+---
