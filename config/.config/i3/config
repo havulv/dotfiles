@@ -169,7 +169,7 @@ bindsym $mod+b exec --no-startup-id wal -i "$HOME/.wallpapers/"
 #	position top
 #}
 
-gaps inner 50
+gaps inner 20
 gaps outer 0
 font Terminus:size=10
 new_window pixel 3
