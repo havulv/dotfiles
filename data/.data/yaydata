@@ -23,7 +23,7 @@ audit 2.8.5-3
 autoconf 2.69-5
 automake 1.16.1-1
 avahi 0.7+18+g1b5f401-2
-aws-cli 1.16.193-1
+aws-cli 1.16.197-1
 bash 5.0.007-1
 bc 1.07.1-3
 bcg729 1.0.4-4
@@ -74,7 +74,7 @@ expat 2.2.7-1
 faad2 2.8.8-1
 fakeroot 1.23-1
 fcron 3.2.1-4
-feh 3.1.3-1
+feh 3.2-1
 ffmpeg 1:4.1.3-1
 fftw 3.3.8-1
 file 5.37-2
@@ -175,7 +175,7 @@ haskell-hslua 1.0.3.1-9
 haskell-hslua-module-system 0.2.1-3
 haskell-hslua-module-text 0.2.1-12
 haskell-hsyaml 0.1.2.0-1
-haskell-http 4000.3.14-6
+haskell-http 4000.3.14-7
 haskell-http-client 0.6.4-15
 haskell-http-client-tls 0.3.5.3-126
 haskell-http-types 0.12.3-19
@@ -184,7 +184,7 @@ haskell-hxt-charproperties 9.2.0.1-12
 haskell-hxt-regex-xmlschema 9.2.0.3-16
 haskell-hxt-unicode 9.0.2.4-12
 haskell-integer-logarithms 1.0.3-2
-haskell-ipynb 0.1-49
+haskell-ipynb 0.1-50
 haskell-juicypixels 3.3.3.1-2
 haskell-lexer 1.0.2-6
 haskell-memory 0.14.18-26
@@ -255,7 +255,7 @@ iniparser 4.1-1
 iproute2 5.2.0-1
 iptables 1:1.8.3-1
 iputils 20180629.f6aac8d-4
-iso-codes 4.2-1
+iso-codes 4.3-1
 iw 5.0.1-1
 jack 0.125.0-7
 jansson 2.12-1
@@ -275,7 +275,7 @@ ladspa 1.15-1
 lame 3.100-2
 lapack 3.8.0-2
 lcms2 2.9-1
-ldb 1:1.5.4-2
+ldb 1:1.5.5-1
 ldns 1.7.0-4
 lemonbar-xft-git 269.00a3fe6-1
 less 551-1
@@ -355,7 +355,7 @@ libogg 1.3.3-3
 libomxil-bellagio 0.9.3-2
 libpaper 1.1.24-11
 libpcap 1.9.0-1
-libpciaccess 0.14-1
+libpciaccess 0.15-1
 libpipeline 1.5.1-1
 libpng 1.6.37-1
 libproxy 0.4.15-10
@@ -395,7 +395,7 @@ libvoikko 4.2-1
 libvorbis 1.3.6-1
 libvpx 1.8.0-1
 libwacom 0.33-1
-libwbclient 4.10.5-1
+libwbclient 4.10.6-1
 libwebp 1.0.2-1
 libx11 1.6.8-1
 libxau 1.0.9-1
@@ -442,7 +442,7 @@ logrotate 3.15.0-1
 logwatch 7.5.1-1
 lua 5.3.5-2
 lua52 5.2.4-4
-lv2 1.16.0-1
+lv2 1.16.0-2
 lvm2 2.02.185-1
 lz4 1:1.9.1-1
 lzo 2.10-2
@@ -487,7 +487,7 @@ pacman-contrib 1.1.0-1
 pacman-mirrorlist 20190614-1
 pam 1.3.1-1
 pambase 20190105.1-1
-pandoc 2.7.3-8
+pandoc 2.7.3-9
 pango 1:1.43.0-2
 pangomm 2.42.0-1
 pciutils 3.6.2-1
@@ -530,7 +530,7 @@ python 3.7.3-2
 python-appdirs 1.4.3-2
 python-attrs 19.1.0-1
 python-beautifulsoup4 4.7.1-1
-python-botocore 1.12.183-1
+python-botocore 1.12.187-1
 python-cachecontrol 0.12.5-4
 python-chardet 3.0.4-2
 python-colorama 0.4.1-1
@@ -602,7 +602,7 @@ serd 0.30.0-1
 shaderc 2018.0-3
 shadow 4.6-3
 shared-mime-info 1.12-1
-smbclient 4.10.5-1
+smbclient 4.10.6-1
 snappy 1.1.7-1
 sord 0.16.2-1
 sound-theme-freedesktop 0.8-3
@@ -610,7 +610,7 @@ spandsp 0.0.6-2
 speex 1.2.0-2
 speexdsp 1.2.0-1
 spirv-tools 2018.5-1
-sqlite 3.28.0-1
+sqlite 3.29.0-1
 sratom 0.6.2-2
 startup-notification 0.12-6
 stow 2.2.2-5
@@ -700,7 +700,7 @@ xorg-mkfontscale 1.2.1-1
 xorg-server 1.20.5-2
 xorg-server-common 1.20.5-2
 xorg-setxkbmap 1.3.1-2
-xorg-xauth 1.0.10-2
+xorg-xauth 1.1-1
 xorg-xbacklight 1.2.2-1
 xorg-xdpyinfo 1.3.2-2
 xorg-xev 1.2.3-1

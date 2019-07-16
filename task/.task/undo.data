@@ -136,3 +136,58 @@ new [description:"Text Dori for coffee or something -- keep in touch yo\n\n" ent
 time 1562961101
 new [description:"ruminate on the purpose of the design. Draw it out more." entry:"1562961101" modified:"1562961101" project:"jat" status:"pending" tags:"art" uuid:"b34fb629-ffb3-4eb7-b4db-6f4b2c030303"]
 ---
+time 1563033030
+new [description:"Pick up the package from 4th ave" entry:"1563033030" modified:"1563033030" status:"pending" uuid:"f5ef33aa-193c-4a14-a8c4-4c1dcf405932"]
+---
+time 1563033030
+new [description:"Text Kat about hanging out" entry:"1563033030" modified:"1563033030" status:"pending" uuid:"7fa5a823-58ca-47d5-8c75-28373d6a2645"]
+---
+time 1563033054
+new [description:"Get a longer reach break for the front wheel" entry:"1563033054" modified:"1563033054" status:"pending" uuid:"1c55f624-5b93-4e10-8cf0-cf7cf560211f"]
+---
+time 1563033054
+new [description:"Buy an actual Schraeder pump NOT A PRESTO ONE" entry:"1563033054" modified:"1563033054" status:"pending" uuid:"1e864043-bb3c-4874-9000-e2386eec88d9"]
+---
+time 1563035446
+old [description:"Mail the rent checks to the place that we were notified about" entry:"1562957664" modified:"1562957664" status:"pending" tags:"living,payment,rent" uuid:"af650152-abec-4261-be49-5ef31c323828"]
+new [description:"Mail the rent checks to the place that we were notified about" end:"1563035446" entry:"1562957664" modified:"1563035446" status:"completed" tags:"living,payment,rent" uuid:"af650152-abec-4261-be49-5ef31c323828"]
+---
+time 1563037016
+new [description:"Add plaid to linkedin profile and switch from previous position" entry:"1563037016" modified:"1563037016" status:"pending" tags:"career" uuid:"17fc1b6a-adcf-4ad2-a0a8-e3a7e8efb6e1"]
+---
+time 1563037029
+old [description:"Add plaid to linkedin profile and switch from previous position" entry:"1563037016" modified:"1563037016" status:"pending" tags:"career" uuid:"17fc1b6a-adcf-4ad2-a0a8-e3a7e8efb6e1"]
+new [description:"Add plaid to linkedin profile and switch from previous position" end:"1563037029" entry:"1563037016" modified:"1563037029" status:"completed" tags:"career" uuid:"17fc1b6a-adcf-4ad2-a0a8-e3a7e8efb6e1"]
+---
+time 1563045027
+new [description:"Buy a bike rack \/\/ bike hanger" entry:"1563045027" modified:"1563045027" project:"Home" status:"pending" tags:"living" uuid:"2a7e2132-2235-41d2-98c9-7a87f8a2f152"]
+---
+time 1563046745
+old [description:"Buy a bike rack \/\/ bike hanger" entry:"1563045027" modified:"1563045027" project:"Home" status:"pending" tags:"living" uuid:"2a7e2132-2235-41d2-98c9-7a87f8a2f152"]
+new [description:"Buy a bike rack \/\/ bike hanger" end:"1563046745" entry:"1563045027" modified:"1563046745" project:"Home" status:"completed" tags:"living" uuid:"2a7e2132-2235-41d2-98c9-7a87f8a2f152"]
+---
+time 1563046838
+old [description:"Build a desk" entry:"1562956953" modified:"1562956953" project:"Home" status:"pending" tags:"workstation" uuid:"ef226e3d-ea74-42fd-85d9-cd1b32ec18b9"]
+new [description:"Build a desk" end:"1563046838" entry:"1562956953" modified:"1563046838" project:"Home" status:"completed" tags:"workstation" uuid:"ef226e3d-ea74-42fd-85d9-cd1b32ec18b9"]
+---
+time 1563046856
+new [description:"Buy turnbuckles" entry:"1563046856" modified:"1563046856" project:"Home" status:"pending" tags:"workstation" uuid:"95dd68b7-2547-45eb-842a-40510ff6e30a"]
+---
+time 1563046868
+new [description:"Buy rigging for cabling" entry:"1563046868" modified:"1563046868" project:"Home" status:"pending" tags:"workstation" uuid:"8728ccd2-cf3a-478e-8a82-d8c833986465"]
+---
+time 1563046883
+new [description:"Buy eye lag bolts" entry:"1563046883" modified:"1563046883" project:"Home" status:"pending" tags:"workstation" uuid:"7f6f29f7-827c-4274-bf1b-6b585e59e75f"]
+---
+time 1563049044
+old [description:"Buy a shower curtain" entry:"1562957586" modified:"1562957586" project:"Home" status:"pending" tags:"bathroom" uuid:"7389fa68-fed7-46c3-a267-f26bb8e10e02"]
+new [description:"Buy a shower curtain" end:"1563049044" entry:"1562957586" modified:"1563049044" project:"Home" status:"completed" tags:"bathroom" uuid:"7389fa68-fed7-46c3-a267-f26bb8e10e02"]
+---
+time 1563049044
+old [description:"Buy a shower mat" entry:"1562957593" modified:"1562957593" project:"Home" status:"pending" tags:"bathroom" uuid:"4924f4dc-31cc-49a1-95d3-522a8f9758dc"]
+new [description:"Buy a shower mat" end:"1563049044" entry:"1562957593" modified:"1563049044" project:"Home" status:"completed" tags:"bathroom" uuid:"4924f4dc-31cc-49a1-95d3-522a8f9758dc"]
+---
+time 1563058189
+old [description:"Clean the toilet" entry:"1562957575" modified:"1562957575" status:"pending" tags:"bathroom,cleaning" uuid:"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"]
+new [description:"Clean the toilet" end:"1563058189" entry:"1562957575" modified:"1563058189" status:"completed" tags:"bathroom,cleaning" uuid:"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"]
+---
