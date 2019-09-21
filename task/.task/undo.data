@@ -191,3 +191,41 @@ time 1563058189
 old [description:"Clean the toilet" entry:"1562957575" modified:"1562957575" status:"pending" tags:"bathroom,cleaning" uuid:"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"]
 new [description:"Clean the toilet" end:"1563058189" entry:"1562957575" modified:"1563058189" status:"completed" tags:"bathroom,cleaning" uuid:"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"]
 ---
+time 1565456814
+old [description:"Buy rigging for cabling" entry:"1563046868" modified:"1563046868" project:"Home" status:"pending" tags:"workstation" uuid:"8728ccd2-cf3a-478e-8a82-d8c833986465"]
+new [description:"Buy rigging for cabling" end:"1565456814" entry:"1563046868" modified:"1565456814" project:"Home" status:"completed" tags:"workstation" uuid:"8728ccd2-cf3a-478e-8a82-d8c833986465"]
+---
+time 1565456821
+old [description:"Buy eye lag bolts" entry:"1563046883" modified:"1563046883" project:"Home" status:"pending" tags:"workstation" uuid:"7f6f29f7-827c-4274-bf1b-6b585e59e75f"]
+new [description:"Buy eye lag bolts" end:"1565456821" entry:"1563046883" modified:"1565456821" project:"Home" status:"completed" tags:"workstation" uuid:"7f6f29f7-827c-4274-bf1b-6b585e59e75f"]
+---
+time 1565456842
+old [description:"Text Kat about hanging out" entry:"1563033030" modified:"1563033030" status:"pending" uuid:"7fa5a823-58ca-47d5-8c75-28373d6a2645"]
+new [description:"Text Kat about hanging out" end:"1565456842" entry:"1563033030" modified:"1565456842" status:"completed" uuid:"7fa5a823-58ca-47d5-8c75-28373d6a2645"]
+---
+time 1565456848
+old [description:"Respond to personal emails" entry:"1562957634" modified:"1562957634" status:"pending" tags:"email" uuid:"4938f787-56f0-4c74-9915-33e9d80ca9ba"]
+new [description:"Respond to personal emails" end:"1565456848" entry:"1562957634" modified:"1565456848" status:"completed" tags:"email" uuid:"4938f787-56f0-4c74-9915-33e9d80ca9ba"]
+---
+time 1565456972
+new [description:"get tickets to yaeji's thing" entry:"1565456972" modified:"1565456972" project:"music" status:"pending" uuid:"e708e9dc-b8db-4059-8a2d-6464c2ed1895"]
+---
+time 1565457187
+new [description:"find a shift swap for august 13" entry:"1565457187" modified:"1565457187" project:"coop" status:"pending" uuid:"04295740-c342-4640-802b-1126de1e39d0"]
+---
+time 1565457419
+old [description:"Do your laundry" entry:"1562957283" modified:"1562957283" status:"pending" tags:"personal,clothing" uuid:"c25712d5-b5bf-463d-a412-28adf0baa7a2"]
+new [description:"Do your laundry" end:"1565457419" entry:"1562957283" modified:"1565457419" status:"completed" tags:"personal,clothing" uuid:"c25712d5-b5bf-463d-a412-28adf0baa7a2"]
+---
+time 1565457429
+old [description:"go for a run" entry:"1562957974" modified:"1562957974" status:"pending" tags:"running" uuid:"fb47f23a-bc40-463b-97c9-d3d3bae1b514"]
+new [description:"go for a run" end:"1565457429" entry:"1562957974" modified:"1565457429" status:"completed" tags:"running" uuid:"fb47f23a-bc40-463b-97c9-d3d3bae1b514"]
+---
+time 1565457436
+old [description:"Reseason cast iron completely" entry:"1562957224" modified:"1562957224" status:"pending" tags:"kitchen" uuid:"cc61818e-4a65-4e6b-a5f7-c5ace94baac5"]
+new [description:"Reseason cast iron completely" end:"1565457436" entry:"1562957224" modified:"1565457436" status:"completed" tags:"kitchen" uuid:"cc61818e-4a65-4e6b-a5f7-c5ace94baac5"]
+---
+time 1565458116
+old [description:"Pick up the package from 4th ave" entry:"1563033030" modified:"1563033030" status:"pending" uuid:"f5ef33aa-193c-4a14-a8c4-4c1dcf405932"]
+new [description:"Pick up the package from 4th ave" end:"1565458116" entry:"1563033030" modified:"1565458116" status:"completed" uuid:"f5ef33aa-193c-4a14-a8c4-4c1dcf405932"]
+---
