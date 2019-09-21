@@ -57,5 +57,5 @@ fi
 
 # run i3 forever
 if [ -f /usr/bin/i3 ]; then
-	exec i3
+	exec i3 -V >> ~/.config/i3/i3.log 2>&1
 fi
