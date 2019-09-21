@@ -26,8 +26,9 @@ endif
 execute pathogen#infect()
 " }}}
 " Deoplete {{{
-execute deoplete#enable()
-
+" -- deoplete is too slow at this point for large
+" -- directories. Might enable this if it gets better
+" execute deoplete#enable()
 " Options
 " call deoplete#max_list=100
 " }}}
@@ -122,7 +123,9 @@ nnoremap <leader>p :Goyo<CR>
 vnoremap <leader>y "+y
 
 " Toggle autocomplete off
-nnoremap <leader>ac :call deoplete#disable()
+" -- deoplete is too slow at this point for large
+" -- directories. Might enable this if it gets better
+" nnoremap <leader>ac :call deoplete#disable()
 
 " Pane Switching Remaps:
 " tnoremap <Esc> <C-\><C-n>
@@ -179,7 +182,7 @@ augroup configgroup
 augroup END
 " }}}
 " Testing {{{
-let test#strategy = 'neovim'
+let test#strategy = 'neovim'  " run in a small terminal
 let test#python#runner = 'nose'
 " }}}
 " Backups {{{
