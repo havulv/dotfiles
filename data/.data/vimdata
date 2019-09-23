@@ -1,9 +1,6 @@
-https://github.com/Shougo/deoplete.nvim
 https://github.com/tpope/vim-fugitive.git
 https://github.com/junegunn/fzf.vim
 https://github.com/junegunn/goyo.vim.git
-https://github.com/deoplete-plugins/deoplete-jedi
-https://github.com/roxma/vim-hug-neovim-rpc
 https://github.com/scrooloose/nerdtree.git
 https://github.com/powerline/powerline.git
 https://github.com/tpope/vim-surround
@@ -12,4 +9,3 @@ https://github.com/tbabej/taskwiki
 https://github.com/janko/vim-test
 https://github.com/vimwiki/vimwiki.git
 https://github.com/alx741/vinfo.git
-https://github.com/roxma/nvim-yarp

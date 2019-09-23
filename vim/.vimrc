@@ -25,9 +25,31 @@ endif
 " Pathogen {{{
 execute pathogen#infect()
 " }}}
-" Deoplete {{{
-execute deoplete#enable()
+" Gutentags {{{
 
+" Set the project root lookup
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['.git', 'package.json']
+
+" Generation settings -- self explanatory
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+
+" Set a default location for tags
+let g:gutentags_cache_dir = expand('~/.dotfiles/cache/.cache/vim/tags/')
+
+" Extra args -- check ctags --list-fields for more info
+let g:gutentags_ctags_extra_args = [
+    \ '--tag-relative=yes',
+    \ '--fields=+ailmnS',
+    \ ]
+" }}}
+" Deoplete {{{
+" -- deoplete is too slow at this point for large
+" -- directories. Might enable this if it gets better
+" execute deoplete#enable()
 " Options
 " call deoplete#max_list=100
 " }}}
@@ -122,7 +144,9 @@ nnoremap <leader>p :Goyo<CR>
 vnoremap <leader>y "+y
 
 " Toggle autocomplete off
-nnoremap <leader>ac :call deoplete#disable()
+" -- deoplete is too slow at this point for large
+" -- directories. Might enable this if it gets better
+" nnoremap <leader>ac :call deoplete#disable()
 
 " Pane Switching Remaps:
 " tnoremap <Esc> <C-\><C-n>
@@ -179,7 +203,7 @@ augroup configgroup
 augroup END
 " }}}
 " Testing {{{
-let test#strategy = 'neovim'
+let test#strategy = 'neovim'  " run in a small terminal
 let test#python#runner = 'nose'
 " }}}
 " Backups {{{
