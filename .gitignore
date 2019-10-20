@@ -3,24 +3,26 @@
 **/.git/**
 
 # Directory bans
-.cache/
+.cache/**
 
 # Duplication
-go/
-wallpaper/.wallpapers/
+go/**
+wallpaper/.wallpapers/**
 
 # Personal
-wiki/
-sound/
-python/
-mozilla/
-local/
-vim/.vim/
+wiki/**
+sound/**
+python/**
+mozilla/**
+local/**
+vim/.vim/**
 config/.config/mpd/db
 config/.config/mpd/pid
 config/.config/mpd/state
-config/.config/pulse/
-config/.config/transmission/
+config/.config/pulse/**
+config/.config/transmission/**
+# Ignore openttd save files
+openttd/.openttd/save/**
 
 # Filetype bans
 *.tdb
@@ -33,7 +35,7 @@ credentials.*
 vim/.viminfo
 less/.lesshst
 bash/.bash_history
+bash/.bashrc
 feh/.fehbg
 config/.config/dconf/user
-# Ignore openttd save files
-openttd/.openttd/save/
+
