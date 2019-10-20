@@ -3,7 +3,7 @@
 **/.git/**
 
 # Directory bans
-.cache/**
+.cache/
 
 # Duplication
 go/**
