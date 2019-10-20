@@ -6,23 +6,24 @@
 .cache/
 
 # Duplication
-go/**
+go/
+rust/
 wallpaper/.wallpapers/**
 
 # Personal
-wiki/**
-sound/**
-python/**
-mozilla/**
-local/**
-vim/.vim/**
+wiki/
+sound/
+python/
+mozilla/
+local/
+vim/.vim/
 config/.config/mpd/db
 config/.config/mpd/pid
 config/.config/mpd/state
-config/.config/pulse/**
-config/.config/transmission/**
+config/.config/pulse/
+config/.config/transmission/
 # Ignore openttd save files
-openttd/.openttd/save/**
+openttd/.openttd/save/
 
 # Filetype bans
 *.tdb
@@ -39,3 +40,5 @@ bash/.bashrc
 feh/.fehbg
 config/.config/dconf/user
 
+# Ignore the spotifyd config bc there are passwords in it rn
+config/.config/spotifyd/
