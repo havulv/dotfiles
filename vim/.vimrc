@@ -187,6 +187,9 @@ let g:syntastic_python_flake8_args='--ignore=E501,N813'
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
+" Syntastic Go {{{
+let g:syntastic_go_checkers = [ "go", "gofmt", "govet"]
+" }}}
 " }}}
 " AutoGroups {{{
 augroup configgroup
