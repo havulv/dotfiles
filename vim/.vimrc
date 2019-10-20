@@ -36,6 +36,9 @@ let g:gutentags_generate_on_new = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
 let g:gutentags_generate_on_empty_buffer = 0
+" Deoplete {{{
+" execute deoplete#enable()
+" Deoplete is really fucking with my shit
 
 " Set a default location for tags
 let g:gutentags_cache_dir = expand('~/.dotfiles/cache/.cache/vim/tags/')
@@ -132,9 +135,9 @@ nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 nnoremap <leader>d :GoDoc 
 
 " Testing
-nnoremap <leader>tf :TestFile<CR>
-nnoremap <leader>ts :TestSuite<CR>
-nnoremap <leader>tl :TestLast<CR>
+nnoremap <leader>Tf :TestFile<CR>
+nnoremap <leader>Ts :TestSuite<CR>
+nnoremap <leader>Tl :TestLast<CR>
 nnoremap <leader>r :call <SID>RunFile()<CR>
 
 " Goyo

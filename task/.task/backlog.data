@@ -14,10 +14,8 @@
 {"description":"Buy some loose linen clothing to pair with well-fitted oversized stuff.","entry":"20190712T184606Z","modified":"20190712T184606Z","status":"pending","tags":["art","personal","clothing"],"uuid":"9db61eb7-f72b-4875-8056-102016e611d3"}
 {"description":"get a haircut","entry":"20190712T184620Z","modified":"20190712T184620Z","status":"pending","tags":["personal","clothing"],"uuid":"3d290bc2-89d8-4e70-a8a8-0fcad3d309b6"}
 {"description":"start the coldbrew experiments \/\/ outline the project needs","entry":"20190712T184643Z","modified":"20190712T184643Z","status":"pending","tags":["personal","food","coffee"],"uuid":"780f2377-2bcd-45f6-a8eb-8566ea9e9ac6"}
-{"description":"Reseason cast iron completely","entry":"20190712T184704Z","modified":"20190712T184704Z","status":"pending","tags":["kitchen"],"uuid":"cc61818e-4a65-4e6b-a5f7-c5ace94baac5"}
 {"description":"Purchase more cast iron (skillet, maybe dutch oven)","entry":"20190712T184725Z","modified":"20190712T184725Z","project":"Home","status":"pending","tags":["kitchen"],"uuid":"6b6ef06b-dcab-49fd-81dc-7e71d1227929"}
 {"description":"Purchase more dish towels","entry":"20190712T184749Z","modified":"20190712T184749Z","project":"Home","status":"pending","tags":["kitchen"],"uuid":"3a67a145-a1c6-4d6c-9431-6629cb8bce51"}
-{"description":"Do your laundry","entry":"20190712T184803Z","modified":"20190712T184803Z","status":"pending","tags":["personal","clothing"],"uuid":"c25712d5-b5bf-463d-a412-28adf0baa7a2"}
 {"description":"Purchase another skillet","entry":"20190712T184851Z","modified":"20190712T184851Z","project":"Home","status":"pending","tags":["kitchen"],"uuid":"69c4fc2d-329e-4225-bdd3-c7d1f01d62dd"}
 {"description":"Purchase a sauce pot (small, medium, and large)","entry":"20190712T184945Z","modified":"20190712T184945Z","project":"Home","status":"pending","tags":["kitchen"],"uuid":"e4be1419-8966-440f-84c8-f3b86a231fd5"}
 {"description":"Make some sourdough bread","entry":"20190712T185012Z","modified":"20190712T185012Z","status":"pending","tags":["kitchen","cooking","bread"],"uuid":"e3e17347-e17d-48b1-aa52-75c1b997e226"}
@@ -29,7 +27,6 @@
 {"description":"Buy a shower mat","entry":"20190712T185313Z","modified":"20190712T185313Z","project":"Home","status":"pending","tags":["bathroom"],"uuid":"4924f4dc-31cc-49a1-95d3-522a8f9758dc"}
 {"description":"Buy more towels","entry":"20190712T185318Z","modified":"20190712T185318Z","project":"Home","status":"pending","tags":["bathroom"],"uuid":"f595170f-38bf-46ff-8e4c-da36d97721b1"}
 {"description":"Hang up some art on the walls","entry":"20190712T185344Z","modified":"20190712T185344Z","project":"Home","status":"pending","tags":["art"],"uuid":"173d8165-ca1e-4775-a602-4210a2c9e583"}
-{"description":"Respond to personal emails","entry":"20190712T185354Z","modified":"20190712T185354Z","status":"pending","tags":["email"],"uuid":"4938f787-56f0-4c74-9915-33e9d80ca9ba"}
 {"description":"Mail the rent checks to the place that we were notified about","entry":"20190712T185424Z","modified":"20190712T185424Z","status":"pending","tags":["living","payment","rent"],"uuid":"af650152-abec-4261-be49-5ef31c323828"}
 {"description":"Build out deeper docs and designs for yemoja","entry":"20190712T185456Z","modified":"20190712T185456Z","status":"pending","tags":["iot","software","fermentation"],"uuid":"63afa847-ebec-4f8f-802c-da388f2ef290"}
 {"description":"Build shelving","entry":"20190712T185518Z","modified":"20190712T185518Z","project":"Home","status":"pending","tags":["workstation"],"uuid":"0b3f4e8c-f890-4ac8-a363-d3c331e27d8c"}
@@ -39,13 +36,10 @@
 {"description":"Buy some containers for organizing utensils","entry":"20190712T185740Z","modified":"20190712T185740Z","project":"Home","status":"pending","tags":["kitchen"],"uuid":"475dc320-87ff-4219-8cec-f3f726f91122"}
 {"description":"Figure out how much of a monetary and time commitment spanish lessons would be","entry":"20190712T185809Z","modified":"20190712T185809Z","status":"pending","tags":["language","spanish"],"uuid":"aa46bef3-ad1d-4c77-828d-54b8103a895a"}
 {"description":"Go visit the brooklyn naval yard to figure out what\/how the maker space is handled","entry":"20190712T185910Z","modified":"20190712T185910Z","project":"Brooklyn","status":"pending","tags":["art"],"uuid":"47e57141-b4ff-49ab-905c-7abe142c452d"}
-{"description":"go for a run","entry":"20190712T185934Z","modified":"20190712T185934Z","status":"pending","tags":["running"],"uuid":"fb47f23a-bc40-463b-97c9-d3d3bae1b514"}
 {"description":"Text annie about a date for hanging out","entry":"20190712T185958Z","modified":"20190712T185958Z","status":"pending","tags":["annie","personal"],"uuid":"d8f35991-a840-49a9-8f88-709f77b61362"}
 {"description":"Respond to Annie's email.","entry":"20190712T190009Z","modified":"20190712T190009Z","status":"pending","tags":["annie","personal"],"uuid":"6ad09c15-6257-4fec-84cc-ac2ad7ae203a"}
 {"description":"Text Dori for coffee or something -- keep in touch yo\n\n","entry":"20190712T195032Z","modified":"20190712T195032Z","status":"pending","tags":["dori","personal"],"uuid":"917560fe-7154-41de-8d1d-585cd9318823"}
 {"description":"ruminate on the purpose of the design. Draw it out more.","entry":"20190712T195141Z","modified":"20190712T195141Z","project":"jat","status":"pending","tags":["art"],"uuid":"b34fb629-ffb3-4eb7-b4db-6f4b2c030303"}
-{"description":"Pick up the package from 4th ave","entry":"20190713T155030Z","modified":"20190713T155030Z","status":"pending","uuid":"f5ef33aa-193c-4a14-a8c4-4c1dcf405932"}
-{"description":"Text Kat about hanging out","entry":"20190713T155030Z","modified":"20190713T155030Z","status":"pending","uuid":"7fa5a823-58ca-47d5-8c75-28373d6a2645"}
 {"description":"Get a longer reach break for the front wheel","entry":"20190713T155054Z","modified":"20190713T155054Z","status":"pending","uuid":"1c55f624-5b93-4e10-8cf0-cf7cf560211f"}
 {"description":"Buy an actual Schraeder pump NOT A PRESTO ONE","entry":"20190713T155054Z","modified":"20190713T155054Z","status":"pending","uuid":"1e864043-bb3c-4874-9000-e2386eec88d9"}
 {"description":"Mail the rent checks to the place that we were notified about","end":"20190713T163046Z","entry":"20190712T185424Z","modified":"20190713T163046Z","status":"completed","tags":["living","payment","rent"],"uuid":"af650152-abec-4261-be49-5ef31c323828"}
@@ -55,14 +49,11 @@
 {"description":"Buy a bike rack \/\/ bike hanger","end":"20190713T193905Z","entry":"20190713T191027Z","modified":"20190713T193905Z","project":"Home","status":"completed","tags":["living"],"uuid":"2a7e2132-2235-41d2-98c9-7a87f8a2f152"}
 {"description":"Build a desk","end":"20190713T194038Z","entry":"20190712T184233Z","modified":"20190713T194038Z","project":"Home","status":"completed","tags":["workstation"],"uuid":"ef226e3d-ea74-42fd-85d9-cd1b32ec18b9"}
 {"description":"Buy turnbuckles","entry":"20190713T194056Z","modified":"20190713T194056Z","project":"Home","status":"pending","tags":["workstation"],"uuid":"95dd68b7-2547-45eb-842a-40510ff6e30a"}
-{"description":"Buy rigging for cabling","entry":"20190713T194108Z","modified":"20190713T194108Z","project":"Home","status":"pending","tags":["workstation"],"uuid":"8728ccd2-cf3a-478e-8a82-d8c833986465"}
-{"description":"Buy eye lag bolts","entry":"20190713T194123Z","modified":"20190713T194123Z","project":"Home","status":"pending","tags":["workstation"],"uuid":"7f6f29f7-827c-4274-bf1b-6b585e59e75f"}
 {"description":"Buy a shower curtain","end":"20190713T201724Z","entry":"20190712T185306Z","modified":"20190713T201724Z","project":"Home","status":"completed","tags":["bathroom"],"uuid":"7389fa68-fed7-46c3-a267-f26bb8e10e02"}
 {"description":"Buy a shower mat","end":"20190713T201724Z","entry":"20190712T185313Z","modified":"20190713T201724Z","project":"Home","status":"completed","tags":["bathroom"],"uuid":"4924f4dc-31cc-49a1-95d3-522a8f9758dc"}
 {"description":"Clean the toilet","end":"20190713T224949Z","entry":"20190712T185255Z","modified":"20190713T224949Z","status":"completed","tags":["bathroom","cleaning"],"uuid":"a12c9b95-7df3-47b4-a9c4-a9da1504f6a3"}
 {"description":"Buy rigging for cabling","end":"20190810T170654Z","entry":"20190713T194108Z","modified":"20190810T170654Z","project":"Home","status":"completed","tags":["workstation"],"uuid":"8728ccd2-cf3a-478e-8a82-d8c833986465"}
 {"description":"Buy eye lag bolts","end":"20190810T170701Z","entry":"20190713T194123Z","modified":"20190810T170701Z","project":"Home","status":"completed","tags":["workstation"],"uuid":"7f6f29f7-827c-4274-bf1b-6b585e59e75f"}
-{"description":"Text Kat about hanging out","end":"20190810T170722Z","entry":"20190713T155030Z","modified":"20190810T170722Z","status":"completed","uuid":"7fa5a823-58ca-47d5-8c75-28373d6a2645"}
 {"description":"Respond to personal emails","end":"20190810T170728Z","entry":"20190712T185354Z","modified":"20190810T170728Z","status":"completed","tags":["email"],"uuid":"4938f787-56f0-4c74-9915-33e9d80ca9ba"}
 {"description":"get tickets to yaeji's thing","entry":"20190810T170932Z","modified":"20190810T170932Z","project":"music","status":"pending","uuid":"e708e9dc-b8db-4059-8a2d-6464c2ed1895"}
 {"description":"find a shift swap for august 13","entry":"20190810T171307Z","modified":"20190810T171307Z","project":"coop","status":"pending","uuid":"04295740-c342-4640-802b-1126de1e39d0"}
@@ -70,3 +61,13 @@
 {"description":"go for a run","end":"20190810T171709Z","entry":"20190712T185934Z","modified":"20190810T171709Z","status":"completed","tags":["running"],"uuid":"fb47f23a-bc40-463b-97c9-d3d3bae1b514"}
 {"description":"Reseason cast iron completely","end":"20190810T171716Z","entry":"20190712T184704Z","modified":"20190810T171716Z","status":"completed","tags":["kitchen"],"uuid":"cc61818e-4a65-4e6b-a5f7-c5ace94baac5"}
 {"description":"Pick up the package from 4th ave","end":"20190810T172836Z","entry":"20190713T155030Z","modified":"20190810T172836Z","status":"completed","uuid":"f5ef33aa-193c-4a14-a8c4-4c1dcf405932"}
+{"description":"Text Kat about hanging out","end":"20190718T124053Z","entry":"20190713T155030Z","modified":"20190718T124053Z","status":"completed","uuid":"7fa5a823-58ca-47d5-8c75-28373d6a2645"}
+{"description":"buy plaster","end":"20190718T124605Z","entry":"20190712T184355Z","modified":"20190718T124605Z","project":"jat","status":"completed","tags":["form"],"uuid":"16ea7f0a-e06f-493c-a1f0-3dd6a40181d2"}
+{"description":"Buy algernon","end":"20190718T124610Z","entry":"20190712T184409Z","modified":"20190718T124610Z","project":"jat","status":"completed","tags":["form"],"uuid":"d088bebf-15ba-44dd-8c8e-d26501bd00da"}
+{"description":"Create the plaster cast of your hand","entry":"20190718T124634Z","modified":"20190718T124634Z","project":"jat","status":"pending","uuid":"b6de193c-1dbb-4663-8235-404931bcb825"}
+{"description":"Do more research into ear piercings and figure out where exactly you want them","entry":"20190718T124735Z","modified":"20190718T124735Z","status":"pending","tags":["piercing"],"uuid":"e3ea1d15-b07d-4530-8620-deea872c7152"}
+{"description":"Buy an umbrella\n","entry":"20190718T124840Z","modified":"20190718T124840Z","status":"pending","tags":["everyday"],"uuid":"26fc3473-1bea-4e55-b2db-658fad0105d3"}
+{"description":"Get a library card","end":"20190718T125332Z","entry":"20190712T163958Z","modified":"20190718T125332Z","status":"completed","uuid":"d0bcbdc8-82a2-4e76-9e64-48a328148e07"}
+{"description":"Go pick up library card from any NYPL","entry":"20190718T125353Z","modified":"20190718T125353Z","status":"pending","tags":["personal"],"uuid":"514dbf07-9cf7-45a2-bc18-4e387d1ba421"}
+{"description":"Cancel the dentist appointment on Monday","entry":"20190718T125753Z","modified":"20190718T125753Z","status":"pending","tags":["dental"],"uuid":"114ca48e-1a05-47f5-92bc-d0623d26b707"}
+{"description":"Go pick up your BROOKLYN public library card","entry":"20190718T125851Z","modified":"20190718T125851Z","status":"pending","tags":["personal"],"uuid":"a2488e99-525b-43a0-b361-e3a1e254680d"}

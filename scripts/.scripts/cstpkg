@@ -152,7 +152,11 @@ install_vim_data() {
                curdir=$(pwd)
                cd $vim_bundle
                for bundle in $(cat $vim_data); do
-                    git clone $bundle
+                   if ! [[ -d "$vim_bundle/$(basename $bundle)" || -d "$vim_bundle/$(basename $bundle | cut -d '.' -f1)" ]]; then
+                       git clone $bundle
+                   else
+                       echo "This vim plugin already exists."
+                   fi
                done
                cd $curdir
            else
