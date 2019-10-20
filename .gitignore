@@ -35,3 +35,5 @@ less/.lesshst
 bash/.bash_history
 feh/.fehbg
 config/.config/dconf/user
+# Ignore openttd save files
+openttd/.openttd/save/
