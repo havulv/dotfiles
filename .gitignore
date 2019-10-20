@@ -22,6 +22,7 @@ config/.config/mpd/pid
 config/.config/mpd/state
 config/.config/pulse/
 config/.config/transmission/
+config/.config/systemd/
 # Ignore openttd save files
 openttd/.openttd/save/
 
