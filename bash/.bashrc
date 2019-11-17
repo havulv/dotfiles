@@ -12,7 +12,7 @@ PS1='[\u@\h \W]\$ '
 
 # Add a local binary placement
 # Add a script directory to the PATH
-export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.scripts/"
+export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.scripts/:/usr/bin/python"
 
 # Add go binaries to path
 export PATH="${PATH}:${HOME}/.go/bin/"
