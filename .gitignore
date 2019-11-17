@@ -43,3 +43,7 @@ config/.config/dconf/user
 
 # Ignore the spotifyd config bc there are passwords in it rn
 config/.config/spotifyd/
+
+# Ignore node stuff
+config/.config/yarn/
+node/.node_repl_history
