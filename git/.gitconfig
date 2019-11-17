@@ -1,9 +1,11 @@
 [user]
-	email = jandersen@plaid.com
+	email = johnandersen185@gmail.com
 	name = Jack Andersen
 [color]
 	ui = auto
 [core]
-	excludesfile = /Users/jandersen/.gitignore_global
-[url "git@github.plaid.com:"]
-	insteadOf = https://github.plaid.com/
+	excludesfile = /home/j/.gitignore_global
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git@gitlab.com:"]
+	insteadOf = https://gitlab.com/
