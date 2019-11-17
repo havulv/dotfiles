@@ -190,6 +190,6 @@ client.background	    $bg     $bg     $fg     $bg         $bg
 
 exec_always --no-startup-id wal -i "$HOME/.wallpapers/"
 exec_always --no-startup-id redshift -c "$HOME/.config/redshift/redshift.conf"
-exec_always --no-startup-id compton -b --config "$HOME/.config/i3/compton.conf"
+exec_always --no-startup-id picom -b --config "$HOME/.config/i3/picom.conf"
 # exec --no-startup-id $HOME/.config/lemonbar/config
 # exec --no-startup-id $HOME/.config/lemonbar/run_lemonbar.sh

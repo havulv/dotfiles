@@ -42,8 +42,8 @@ fi
 
 # Started in i3 config
 # Start compositor
-# if [ -f /usr/bin/compton]; then
-#	compton --fading --daemon --config "$HOME/.config/i3/compton.conf"
+# if [ -f /usr/bin/picom]; then
+#	picom --fading --daemon --config "$HOME/.config/i3/picom.conf"
 #fi
 
 if [ -f /usr/bin/xbindkeys ]; then
@@ -55,7 +55,7 @@ if [ -f /usr/bin/redshift ]; then
 	redshift -c "$HOME/.config/redshift/redshift.conf" &
 fi
 
-# run i3 forever
+# run i3 forever -- log to a tmp file and move if we need 'em
 if [ -f /usr/bin/i3 ]; then
-	exec i3 -V >> ~/.config/i3/i3.log 2>&1
+	exec i3 -V >> /tmp/i3.log 2>&1
 fi
