@@ -189,6 +189,7 @@ let g:syntastic_python_python_exec = 'python3'
 " }}}
 " Syntastic Go {{{
 let g:syntastic_go_checkers = [ "go", "gofmt", "govet"]
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
 " }}}
 " AutoGroups {{{
