@@ -5,8 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
+if [[ "$(uname -s)" == "Linux" ]]; then
+    alias ls='ls --color=auto'
+    PS1='[\u@\h \W]\$ '
+fi
 
 # export MPD_HOST="/run/mpd/socket"
 
@@ -30,4 +32,10 @@ alias dep=$HOME/.go/bin/dep
 export LESSHISTFILE="${HOME}/.dotfiles/less/.lesshst"
 
 # Export secrets to the env -- ignoring spaces and comments
-export $(grep -v '^#' .env | xargs -d '\n')
+# BSD based distros don't support -d for xargs 
+if [[ "$(uname -s)" == "Darwin" ||
+     "$(uname -s)" == "BSD" ]]; then
+     export $(grep -v '^#' ~/.env | xargs -0)
+else
+    export $(grep -v '^#' ~/.env | xargs -d '\n')
+fi

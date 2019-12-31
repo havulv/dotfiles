@@ -183,7 +183,7 @@ let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " Syntastic {{{
 " Syntastic Python {{{
 let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_python_flake8_args='--ignore=E501,N813'
+let g:syntastic_python_flake8_args='--ignore=E501,N813,W504'
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
@@ -208,6 +208,9 @@ augroup configgroup
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
 augroup END
+" }}}
+" Open in the browser {{{
+let g:netrw_browsex_viewer = "open"
 " }}}
 " Testing {{{
 let test#strategy = 'neovim'  " run in a small terminal

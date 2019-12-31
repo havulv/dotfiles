@@ -17,12 +17,25 @@ python/
 mozilla/
 local/
 vim/.vim/
+
+# MPD system info
 config/.config/mpd/db
 config/.config/mpd/pid
 config/.config/mpd/state
 config/.config/pulse/
+
+# Torrent client info
 config/.config/transmission/
+
+# Systemd info
 config/.config/systemd/
+
+# Coc.nvim info
+config/.config/coc/extensions/*
+config/.config/coc/history.json
+config/.config/coc/memos.json
+config/.config/coc/mru
+
 # Ignore openttd save files
 openttd/.openttd/save/
 
@@ -69,3 +82,11 @@ env/.env
 
 # Ignore aws config as this could leak info
 aws/.aws/config
+
+# Don't ignore the folder, just the directory
+!OSX
+OSX/*
+
+# Database configuration files -- system dependent
+mssql/*
+pg/*
