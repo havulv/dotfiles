@@ -62,3 +62,5 @@ k8s/.minikube/*
 k8s/.minikube/config/*
 !k8s/.minikube/config/config.json
 
+# Ignore secrets
+env/.env

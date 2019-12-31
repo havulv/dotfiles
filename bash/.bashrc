@@ -28,3 +28,6 @@ alias dep=$HOME/.go/bin/dep
 # Less does not like symlinks, so the the history file needs to
 # be pointed at directly
 export LESSHISTFILE="${HOME}/.dotfiles/less/.lesshst"
+
+# Export secrets to the env -- ignoring spaces and comments
+export $(grep -v '^#' .env | xargs -d '\n')
