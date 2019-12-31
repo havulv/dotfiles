@@ -55,6 +55,8 @@ docker/.docker/config.json
 
 # Ignore task due to being a separate repo from now on
 task/*
+# Keeping the config tho
+!task/.taskrc
 
 # Ignore most of minikube except config
 k8s/.minikube/*
