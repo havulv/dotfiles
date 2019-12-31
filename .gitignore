@@ -32,6 +32,7 @@ openttd/.openttd/save/
 *.torrent
 *.resume
 credentials.*
+credentials
 
 # File bans
 vim/.viminfo
@@ -47,3 +48,10 @@ config/.config/spotifyd/
 # Ignore node stuff
 config/.config/yarn/
 node/.node_repl_history
+yarn/.yarn/
+
+# Docker login details
+docker/.docker/config.json
+
+# Ignore task due to being a separate repo from now on
+task/*
