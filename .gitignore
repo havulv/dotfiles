@@ -66,3 +66,6 @@ k8s/.minikube/config/*
 
 # Ignore secrets
 env/.env
+
+# Ignore aws config as this could leak info
+aws/.aws/config
