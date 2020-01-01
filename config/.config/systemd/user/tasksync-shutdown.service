@@ -1,0 +1,13 @@
+[Unit]
+Description=A system for syncing tasks across machines and services (shutdown)
+Documentation=https://git.sr.ht/~sea_wulf/dotfiles/tree/master/scripts/tasksync
+Wants=network.target
+After=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStop=/usr/bin/bash %h/.scripts/tasksync
+
+[Install]
+WantedBy=default.target

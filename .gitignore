@@ -27,8 +27,8 @@ config/.config/pulse/
 # Torrent client info
 config/.config/transmission/
 
-# Systemd info
-config/.config/systemd/
+# Systemd info but not custom units
+config/.config/systemd/user/default.target.wants/
 
 # Coc.nvim info
 config/.config/coc/extensions/*

@@ -1,0 +1,32 @@
+#! /usr/bin/bash
+
+log () {
+    # Echo only to stderr on error, and fatal. Stdout otherwise
+    case "$1" in
+    "info")
+        >&2 echo "[$(date) $USER]::INFO $2"
+        ;;
+    "warn")
+        >&2 echo "[$(date) $USER]::WARN $2"
+        ;;
+    "error")
+        >&2 echo "[$(date) $USER]::ERROR $2"
+        ;;
+    "fatal")
+        >&2 echo "[$(date) $USER]::FATAL $2"
+        ;;
+    *)
+        echo "[$(date) $USER]::INFO $2"
+        ;;
+    esac
+
+}
+
+if ! hash task; then
+    log fatal "Task warrior (task) not installed. Nothing to sync."
+    exit
+else
+    log info "Task installation verified, proceeding..."
+fi
+
+
