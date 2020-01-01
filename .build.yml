@@ -9,7 +9,7 @@ sources:
 tasks:
     - mirror: |
         echo "StrictHostKeyChecking=no" >> ~/.ssh/config
-        cd bread
+        cd dotfiles
         ls ~/.ssh -l
         git config --global user.email "johnandersen185@gmail.com"
         git config --global user.name "Sea_Wulf"
