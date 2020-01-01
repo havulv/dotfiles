@@ -37,7 +37,7 @@ stow_package() {
 
 
 if ! hash stow; then
-    pacman -Syu stow
+    echo "'stow' not installed. Please install and make sure the binary is available from the PATH."
 fi
 
 if [[ -d $dotfiles ]]; then
@@ -50,7 +50,11 @@ if [[ -d $dotfiles ]]; then
     else
         # Cycle through packages
         for pkg in $(ls -A $dotfiles); do
-            if [[ "$pkg" != ".git" && "$pkg" != ".gitignore" ]]; then
+            if [[ "$pkg" != ".git" && 
+                  "$pkg" != ".gitignore" &&
+                  "$pkg" != ".travis.yml" &&
+                  "$pkg" != ".build.yml" &&
+                  "$pkg" != ".gitlab-ci.yml" ]]; then
                 stow_package $pkg
             fi
         done
