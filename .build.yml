@@ -3,7 +3,7 @@ packages:
     - git
 secrets:
     - 144b0618-5642-43dd-846e-73ca1ab51a35 # build.sr.ht key
-    - b67c61a0-7fc5-4339-add0-1854c05565d3 # for mirroring to gitlab
+    - bc1a296e-f4b1-4059-90ba-3ce0e2ba9cac # for mirroring to gitlab
 sources:
     - git@git.sr.ht:~sea_wulf/dotfiles
 tasks:
@@ -13,4 +13,5 @@ tasks:
         ls ~/.ssh -l
         git config --global user.email "johnandersen185@gmail.com"
         git config --global user.name "Sea_Wulf"
-        git push --mirror git@gitlab.com:Sea_Wulf/dotfiles.git
+        git remote add gitlab git@gitlab.com:Sea_Wulf/dotfiles.git
+        git push --mirror
