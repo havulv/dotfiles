@@ -131,8 +131,17 @@ nnoremap <leader>ez :vsp ~/.bashrc<CR>
 " Check for errors
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 
+" Golang {{{
+" vim-go specific things
 " Go documentation from vim-go
-nnoremap <leader>d :GoDoc 
+nnoremap <leader>gd :GoDoc 
+vnoremap <leader>gd :GoDoc 
+nnoremap <leader>gbr :GoDocBrowser
+vnoremap <leader>gbr :GoDocBrowser
+nnoremap <leader>gl :GoLint
+nnoremap <leader>gf :GoFmt
+nnoremap <leader>gi :GoInfo
+" }}}
 
 " Testing
 nnoremap <leader>Tf :TestFile<CR>
@@ -182,13 +191,13 @@ let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 " Syntastic {{{
 " Syntastic Python {{{
-let g:syntastic_python_checkers = ["flake8"]
+let g:syntastic_python_checkers = ["flake8", "pylint"]
 let g:syntastic_python_flake8_args='--ignore=E501,N813,W504'
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
 " Syntastic Go {{{
-let g:syntastic_go_checkers = [ "go", "gofmt", "govet"]
+let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "golint"]
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
 " }}}
