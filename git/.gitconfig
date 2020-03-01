@@ -5,7 +5,8 @@
 	ui = auto
 [core]
 	excludesfile = /home/j/.gitignore_global
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-[url "git@gitlab.com:"]
-	insteadOf = https://gitlab.com/
+# Default to SSH instead of https
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
+[url "ssh://git@gitlab.com/"]
+    insteadOf = https://gitlab.com/

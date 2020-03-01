@@ -87,3 +87,6 @@ OSX/*
 # Database configuration files -- system dependent
 mssql/*
 pg/*
+
+# Disallow terraform -- infrastructure is almost always machine specific
+terraform/**
