@@ -62,6 +62,7 @@ yarn/.yarn/
 
 # Docker login details
 docker/.docker/config.json
+docker/.docker.buildNodeID
 
 # Ignore task due to being a separate repo from now on
 task/*
