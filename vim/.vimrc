@@ -134,13 +134,16 @@ nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 " Golang {{{
 " vim-go specific things
 " Go documentation from vim-go
-nnoremap <leader>gd :GoDoc 
-vnoremap <leader>gd :GoDoc 
-nnoremap <leader>gbr :GoDocBrowser
-vnoremap <leader>gbr :GoDocBrowser
-nnoremap <leader>gl :GoLint
-nnoremap <leader>gf :GoFmt
-nnoremap <leader>gi :GoInfo
+" Normal mode
+nnoremap <leader>gd :GoDoc<CR>
+nnoremap <leader>gbr :GoDocBrowser<CR>
+nnoremap <leader>gl :GoLint<CR>
+nnoremap <leader>gf :GoFmt<CR>
+nnoremap <leader>gi :GoInfo<CR>
+
+" Visual mode
+vnoremap <leader>gd :GoDoc<CR>
+vnoremap <leader>gbr :GoDocBrowser<CR>
 " }}}
 
 " Testing
