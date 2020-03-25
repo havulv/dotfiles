@@ -39,3 +39,7 @@ if [[ "$(uname -s)" == "Darwin" ||
 else
     export $(grep -v '^#' ~/.env | xargs -d '\n')
 fi
+
+if hash wal ; then
+    wal -R
+fi
