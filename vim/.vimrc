@@ -198,7 +198,9 @@ let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 " Syntastic {{{
 " Syntastic Python {{{
-let g:syntastic_python_checkers = ["flake8", "pylint"]
+" In general, I would like to use pylint but there are too many egregious
+" errors rn
+let g:syntastic_python_checkers = ["flake8"]
 let g:syntastic_python_flake8_args='--ignore=E501,N813,W504'
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
