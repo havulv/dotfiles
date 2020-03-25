@@ -140,6 +140,7 @@ nnoremap <leader>gbr :GoDocBrowser<CR>
 nnoremap <leader>gl :GoLint<CR>
 nnoremap <leader>gf :GoFmt<CR>
 nnoremap <leader>gi :GoInfo<CR>
+nnoremap <leader>gt :GoTest<CR>
 
 " Visual mode
 vnoremap <leader>gd :GoDoc<CR>
@@ -154,6 +155,9 @@ nnoremap <leader>r :call <SID>RunFile()<CR>
 
 " Goyo
 nnoremap <leader>p :Goyo<CR>
+
+" Nerdtree
+nnoremap <leader>d :NERDTree<CR>
 
 " Copy into the + register on highlight
 vnoremap <leader>y "+y
