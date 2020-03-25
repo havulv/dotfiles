@@ -4,11 +4,14 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = /home/j/.gitignore_global
-# Default to SSH instead of https
+    excludesfile = ~/.gitignore_global
+
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 [url "ssh://git@gitlab.com/"]
     insteadOf = https://gitlab.com/
-[url "ssh://git@github.plaid.com:"]
-    insteadOf = https://github.plaid.com/
+
+[includeIf "gitdir:~/plaid/"]
+    path = ~/.gitconfig_plaid
+[includeIf "gitdir:~/quovo/"]
+    path = ~/.gitconfig_plaid
