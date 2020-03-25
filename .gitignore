@@ -44,8 +44,11 @@ openttd/.openttd/save/
 *.log
 *.torrent
 *.resume
+
+# File naming bans
 credentials.*
 credentials
+*_history
 
 # File bans
 vim/.viminfo
@@ -75,11 +78,15 @@ k8s/.minikube/*
 k8s/.minikube/config/*
 !k8s/.minikube/config/config.json
 
+# Ignore kubectl config files -- sensitivio
+kube/.kube/**
+
 # Ignore secrets
 env/.env
 
 # Ignore aws config as this could leak info
 aws/.aws/config
+aws/.saml2aws
 
 # Don't ignore the folder, just the directory
 !OSX
