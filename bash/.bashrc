@@ -40,6 +40,16 @@ else
     export $(grep -v '^#' ~/.env | xargs -d '\n')
 fi
 
-if hash wal ; then
-    wal -R
+# Run wal if it is installed
+if hash wal 2> /dev/null; then
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+        wallpaper_path=$(osascript -e 'tell app "finder" to get posix path of (get desktop picture as alias)' | sed s+.dotfiles/wallpaper/++)
+        if [[ "$wallpaper_path" != "$(jq '.wallpaper' "$HOME/.cache/wal/colors.json" | tr -d '"')" ]]; then
+            wal -R
+        else
+            wal -R -n
+        fi
+    else
+        wal -R
+    fi
 fi

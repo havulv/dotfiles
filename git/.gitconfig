@@ -1,6 +1,3 @@
-[user]
-	email = johnandersen185@gmail.com
-	name = Jack Andersen
 [color]
 	ui = auto
 [core]
@@ -11,7 +8,18 @@
 [url "ssh://git@gitlab.com/"]
     insteadOf = https://gitlab.com/
 
+# Plaid configs
 [includeIf "gitdir:~/plaid/"]
     path = ~/.gitconfig_plaid
 [includeIf "gitdir:~/quovo/"]
     path = ~/.gitconfig_plaid
+
+# Sea_wulf configs
+[includeIf "gitdir:~/github/"]
+    path = ~/.gitconfig_sea
+[includeIf "gitdir:~/gitlab/"]
+    path = ~/.gitconfig_sea
+[includeIf "gitdir:~/srht/"]
+    path = ~/.gitconfig_sea
+[includeIf "gitdir:~/.dotfiles"]
+    path = ~/.gitconfig_sea
