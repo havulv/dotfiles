@@ -140,7 +140,7 @@ nnoremap <leader>gbr :GoDocBrowser<CR>
 nnoremap <leader>gl :GoLint<CR>
 nnoremap <leader>gf :GoFmt<CR>
 nnoremap <leader>gi :GoInfo<CR>
-nnoremap <leader>gt :GoTest<CR>
+nnoremap <leader>gt :GoTest! %:p<CR>
 
 " Visual mode
 vnoremap <leader>gd :GoDoc<CR>
