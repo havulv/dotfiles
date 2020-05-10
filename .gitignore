@@ -98,3 +98,7 @@ pg/*
 
 # Disallow terraform -- infrastructure is almost always machine specific
 terraform/**
+
+# Kubernetes
+# Ignore the helm repositories file -- contains passwords
+config/.config/helm/repositories.yaml
