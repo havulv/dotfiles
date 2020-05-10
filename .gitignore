@@ -38,6 +38,7 @@ config/.config/coc/mru
 
 # Ignore openttd save files
 openttd/.openttd/save/
+openttd/.openttd/hs.data
 
 # Filetype bans
 *.tdb
@@ -95,6 +96,7 @@ OSX/*
 # Database configuration files -- system dependent
 mssql/*
 pg/*
+sql/*
 
 # Disallow terraform -- infrastructure is almost always machine specific
 terraform/**
