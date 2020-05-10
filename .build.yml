@@ -7,4 +7,4 @@ sources:
     - git@git.sr.ht:~sea_wulf/dotfiles
 tasks:
     - pass: |
-      echo "pass"
+        echo "pass"
