@@ -158,6 +158,7 @@ nnoremap <leader>p :Goyo<CR>
 
 " Nerdtree
 nnoremap <leader>d :NERDTree<CR>
+nnoremap <leader>dc :NERDTreeClose<CR>
 
 " Copy into the + register on highlight
 vnoremap <leader>y "+y

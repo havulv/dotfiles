@@ -104,3 +104,7 @@ terraform/**
 # Kubernetes
 # Ignore the helm repositories file -- contains passwords
 config/.config/helm/repositories.yaml
+
+# Wireguard
+# VPN keys that should be ignored -- be careful to name these correctly!
+config/.config/wireguard/*key
