@@ -1,0 +1,9 @@
+/*
+ * Do not remove the @namespace line -- it is required for functionality
+ */
+/* @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+/*
+ * Make all the default font sizes 9 pt:
+ */
+/* * { font-size: 50px !important; }

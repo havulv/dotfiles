@@ -14,9 +14,18 @@ wallpaper/.wallpapers/**
 wiki/
 sound/
 python/
-mozilla/
 local/
 vim/.vim/
+
+# Allow the custom configurations
+# for firefox that are sym linked to the
+# correct dir
+mozilla/*
+!mozilla/
+mozilla/.mozilla/*
+!mozilla/.mozilla/
+!mozilla/.mozilla/config/
+!mozilla/.mozilla/config/*
 
 # MPD system info
 config/.config/mpd/db
