@@ -1,0 +1,4 @@
+#! /usr/bin/bash
+
+# TODO: make this a useable script
+xrandr --output eDP1 --below DP1 --auto
