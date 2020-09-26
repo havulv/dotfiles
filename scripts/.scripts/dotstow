@@ -1,4 +1,13 @@
-#! /bin/sh
+#! /bin/bash
+
+DENYLIST=(
+    ".git"
+    ".gitignore"
+    ".travis.yml"
+    ".build.yml"
+    ".gitlab-ci.yml"
+    "README.md"
+)
 
 root=$HOME
 dotfile_name=".dotfiles"
@@ -8,11 +17,12 @@ refresh=1
 stow_package() {
     pkg_loc=$dotfiles$1
     # Check if the package has been stowed
-    for fname in $(ls -A $pkg_loc); do
+    for fname in "$pkg_loc"/*; do
         refresh=1
-        for rtfname in $(ls -A $root); do
-            if [[ "$fname" == "$rtfname" ]]; then
+        for rtfname in "$root"/*; do
+            if [[ "$(basename "$fname")" == "$(basename "$rtfname")" ]]; then
                 refresh=0
+                break
             fi
         done
     done
@@ -20,19 +30,23 @@ stow_package() {
     sdir="-d $dotfile_name"
     if [[ "$(pwd)/" == "$dotfiles" ]]; then
         sdir=""
-    fi 
-    
+    fi
+
     # Chdir to avoid some stow errors
     curdir=$(pwd)
-    cd $HOME
+    cd "$root" || return  # quit if we can't find the root
     if [[ $refresh -eq 0 ]]; then
         echo "Restowing $1..."
+        # (stow does not like quoted things)
+        # shellcheck disable=SC2086
         stow -t $root $sdir -R $1
     else
         echo "Stowing $1..."
+        # (stow does not like quoted things)
+        # shellcheck disable=SC2086
         stow -t $root $sdir -S $1
     fi
-    cd $curdir
+    cd "$curdir" || return
 }
 
 
@@ -43,20 +57,25 @@ fi
 if [[ -d $dotfiles ]]; then
     if [[ $# -gt 0 ]]; then
         if [[ -d $dotfiles$1 ]]; then
-            stow_package $1
+            stow_package "$1"
         else
             echo "$1 is not a package in $dotfiles."
         fi
     else
         # Cycle through packages
-        for pkg in $(ls -A $dotfiles); do
-            if [[ "$pkg" != ".git" && 
-                  "$pkg" != ".gitignore" &&
-                  "$pkg" != ".travis.yml" &&
-                  "$pkg" != ".build.yml" &&
-                  "$pkg" != ".gitlab-ci.yml" ]]; then
-                stow_package $pkg
+        for pkg in "$dotfiles"/*; do
+            skip=0
+            for deny in ${DENYLIST[*]}; do
+                if [[ "$(basename "$pkg")" == "$(basename "$deny")" ]]; then
+                    skip=1
+                fi
+            done
+
+            if [[ $skip -eq 1 ]]; then
+                continue
             fi
+
+            stow_package "$(basename "$pkg")"
         done
     echo "Done."
     fi
