@@ -145,6 +145,10 @@ nnoremap <leader>gt :GoTest!<CR>
 " Visual mode
 vnoremap <leader>gd :GoDoc<CR>
 vnoremap <leader>gbr :GoDocBrowser<CR>
+
+" use gopls for definitions and info
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " }}}
 
 " Testing
