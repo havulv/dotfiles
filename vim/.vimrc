@@ -140,15 +140,21 @@ nnoremap <leader>gbr :GoDocBrowser<CR>
 nnoremap <leader>gl :GoLint<CR>
 nnoremap <leader>gf :GoFmt<CR>
 nnoremap <leader>gi :GoInfo<CR>
-nnoremap <leader>gt :GoTest!<CR>
+nnoremap <leader>gta :GoTest! -tags=all<CR>
+nnoremap <leader>gtu :GoTest! -tags=unit<CR>
+nnoremap <leader>gti :GoTest! -tags=integration<CR>
+nnoremap <leader>gtf :GoTestFunc!<CR>
 
 " Visual mode
 vnoremap <leader>gd :GoDoc<CR>
 vnoremap <leader>gbr :GoDocBrowser<CR>
 
 " use gopls for definitions and info
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
+
+" use goimports for auto importing
+let g:go_fmt_command = "goimports"
 " }}}
 
 " Testing
