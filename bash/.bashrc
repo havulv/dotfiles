@@ -43,21 +43,27 @@ else
 fi
 
 # Run wal if it is installed
-if hash wal 2> /dev/null && [[ ! -f "/tmp/wal.lock" ]]; then
-    # We create a "lock" file in /tmp/ so that we don't reload wal everytime
-    # we open a new terminal -- turns out this is pretty expensive to do :|
-    # We only need to run wal on first terminal start anyways
-    # TODO: lock on a directory so that it is an atomic lock (right now there is a race condition)
-    touch /tmp/wal.lock
+if hash wal 2> /dev/null ; then
+    if [[ ! -f "/tmp/wal.lock" ]]; then
+        # We create a "lock" file in /tmp/ so that we don't reload the background 
+        # we open a new terminal -- turns out this is pretty expensive to do :|
+        # We only need to run wal on first terminal start anyways
+        # TODO: lock on a directory so that it is an atomic lock (right now there is a race condition)
+        touch /tmp/wal.lock
 
-    if [[ "$(uname -s)" == "Darwin" ]]; then
-        wallpaper_path=$(osascript -e 'tell app "finder" to get posix path of (get desktop picture as alias)' | sed s+.dotfiles/wallpaper/++)
-        if [[ "$wallpaper_path" != "$(jq '.wallpaper' "$HOME/.cache/wal/colors.json" | tr -d '"')" ]]; then
-            wal -R
+        if [[ "$(uname -s)" == "Darwin" ]]; then
+            wallpaper_path=$(osascript -e 'tell app "finder" to get posix path of (get desktop picture as alias)' | sed s+.dotfiles/wallpaper/++)
+            if [[ "$wallpaper_path" != "$(jq '.wallpaper' "$HOME/.cache/wal/colors.json" | tr -d '"')" ]]; then
+                wal -R
+            else
+                wal -R -n
+            fi
         else
-            wal -R -n
+            wal -R
         fi
     else
-        wal -R
+        # Skip setting the background and reloading the wm
+        # This should only load the color scheme for the terminal
+        wal -Rneq
     fi
 fi
