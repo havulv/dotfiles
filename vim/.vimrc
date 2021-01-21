@@ -1,10 +1,11 @@
 " Adapted from Douglas Black's .vimrc
-" Vi {{{
+" Vi: {{{
 set nocompatible "Explicitly set non-Vi compatiability
 " }}}
-" Colors {{{
+" Colors: {{{
 syntax enable           " enable syntax processing
 colorscheme badwolf
+
 " Font Settings{{{
 set encoding=utf-8
 
@@ -22,11 +23,12 @@ if has("gui_running")
     endif
 endif
 " }}}
-" Pathogen {{{
+
+" Pathogen: {{{
 execute pathogen#infect()
 " }}}
-" Gutentags {{{
 
+" Gutentags: {{{
 " Set the project root lookup
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_project_root = ['.git', 'package.json']
@@ -36,9 +38,6 @@ let g:gutentags_generate_on_new = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
 let g:gutentags_generate_on_empty_buffer = 0
-" Deoplete {{{
-" execute deoplete#enable()
-" Deoplete is really fucking with my shit
 
 " Set a default location for tags
 let g:gutentags_cache_dir = expand('~/.dotfiles/cache/.cache/vim/tags/')
@@ -49,20 +48,31 @@ let g:gutentags_ctags_extra_args = [
     \ '--fields=+ailmnS',
     \ ]
 " }}}
-" Deoplete {{{
+
+" Deoplete: {{{
+" execute deoplete#enable()
+" Deoplete is really fucking with my shit
+
+" Toggle autocomplete off
+" -- deoplete is too slow at this point for large
+" -- directories. Might enable this if it gets better
+" nnoremap <leader>ac :call deoplete#disable()
+
 " -- deoplete is too slow at this point for large
 " -- directories. Might enable this if it gets better
 " execute deoplete#enable()
 " Options
 " call deoplete#max_list=100
 " }}}
-" Vimwiki, Clipboard, and Viminfo {{{
+
+" Vimwiki, Clipboard, and Viminfo: {{{
 set backspace=indent,eol,start
 let g:vimwiki_list = [{'path': '~/.wiki/'}]
 set clipboard=unnamed
 set viminfo+=n~/.dotfiles/vim/.viminfo
 " }}}
-" Spaces & Tabs {{{
+
+" Spaces & Tabs: {{{
 set tabstop=4           " 4 space tab
 set expandtab           " use spaces for tabs
 set softtabstop=4       " 4 space tab
@@ -72,19 +82,22 @@ filetype indent on
 filetype plugin on
 set autoindent
 " }}}
-" UI Layout {{{
+
+" UI Layout: {{{
 set number              " show line numbers
 set showcmd             " show command in bottom bar
 set nocursorline        " highlight current line
 set lazyredraw
 set showmatch           " higlight matching parenthesis
 " }}}
-" Searching {{{
+
+" Searching: {{{
 set ignorecase          " ignore case when searching
 set incsearch           " search as characters are entered
 set hlsearch            " highlight all matches
 " }}}
-" Folding {{{
+
+" Folding: {{{
 "=== folding ===
 set foldmethod=indent   " fold based on indent level
 set foldnestmax=10      " max 10 depth
@@ -92,7 +105,8 @@ set foldenable          " don't fold files by default on open
 nnoremap <space> za
 set foldlevelstart=10   " start with fold level of 1
 " }}}
-" Line Shortcuts {{{
+
+" Line Shortcuts: {{{
 nnoremap j gj
 nnoremap k gk
 nnoremap gV `[v`]
@@ -101,7 +115,8 @@ vnoremap E $
 nnoremap B ^
 vnoremap B ^
 " }}}
-" Leader Shortcuts {{{
+
+" Leader Shortcuts: {{{
 let mapleader=","
 
 " Vim stuff
@@ -130,9 +145,11 @@ nnoremap <leader>ez :vsp ~/.bashrc<CR>
 
 " Check for errors
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
+" }}}
 
-" Golang {{{
-" vim-go specific things
+" Golang: {{{
+
+" Vim-Go: {{{
 " Go documentation from vim-go
 " Normal mode
 nnoremap <leader>gd :GoDoc<CR>
@@ -144,6 +161,7 @@ nnoremap <leader>gta :GoTest! -tags=all<CR>
 nnoremap <leader>gtu :GoTest! -tags=unit<CR>
 nnoremap <leader>gti :GoTest! -tags=integration<CR>
 nnoremap <leader>gtf :GoTestFunc!<CR>
+nnoremap <leader>gc :GoMetaLinter!<CR>
 
 " Visual mode
 vnoremap <leader>gd :GoDoc<CR>
@@ -154,31 +172,53 @@ let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
 
 " use goimports for auto importing
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
+
+" use golangci-lint for linting
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "10s"
+" Debug
+" let g:go_debug=['shell-commands']
+
+" }}}
+" GoVim: {{{
+" suggestions from the minimal govim
+set updatetime=500
+set signcolumn=number
+" Set the goimports package to the local
+" module root
+call govim#config#Set("FormatOnSave", "goimports")
+call govim#config#Set("GoImportsLocalPrefix", trim(
+    \ system(
+    \ 'cd ' . substitute(
+        \ shellescape(
+            \ expand('%:p:h')),
+    \ "\.dotfiles\/go\/", "", "") .
+    \ ' && go list -m;')))
 " }}}
 
-" Testing
+" Testing: {{{
 nnoremap <leader>Tf :TestFile<CR>
 nnoremap <leader>Ts :TestSuite<CR>
 nnoremap <leader>Tl :TestLast<CR>
 nnoremap <leader>r :call <SID>RunFile()<CR>
+" }}}
 
-" Goyo
+" Goyo: {{{
 nnoremap <leader>p :Goyo<CR>
+" }}}
 
-" Nerdtree
+" Nerdtree: {{{
 nnoremap <leader>d :NERDTree<CR>
 nnoremap <leader>dc :NERDTreeClose<CR>
+" }}}
 
+" Copy Paste: {{{
 " Copy into the + register on highlight
 vnoremap <leader>y "+y
+" }}}
 
-" Toggle autocomplete off
-" -- deoplete is too slow at this point for large
-" -- directories. Might enable this if it gets better
-" nnoremap <leader>ac :call deoplete#disable()
-
-" Pane Switching Remaps:
+" Pane Switching Remaps: {{{
 " tnoremap <Esc> <C-\><C-n>
 " tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
 tnoremap <C-W><C-h> <C-\><C-N><C-w>h
@@ -190,25 +230,28 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 " }}}
-" Powerline {{{
+
+" Powerline: {{{
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 let g:powerline_pycmd = "py3"
 let g:Powerline_symbols = "fancy"
 set laststatus=2
 " }}}
-" Avoid Esc {{{
+
+" Avoid Esc: {{{
 inoremap jk <Esc>
 inoremap kj <Esc>
 " }}}
 
-" CtrlP {{{
+" CtrlP: {{{
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
-" Syntastic {{{
-" Syntastic Python {{{
+
+" Syntastic: {{{
+" Syntastic Python: {{{
 " In general, I would like to use pylint but there are too many egregious
 " errors rn
 let g:syntastic_python_checkers = ["flake8"]
@@ -216,12 +259,13 @@ let g:syntastic_python_flake8_args='--ignore=E501,N813,W504'
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
-" Syntastic Go {{{
-let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "golint"]
+" Syntastic Go: {{{
+let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "golint" ]
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
 " }}}
-" AutoGroups {{{
+
+" AutoGroups: {{{
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
@@ -229,23 +273,26 @@ augroup configgroup
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
-    autocmd BufEnter *.sh setlocal tabstop=2
-    autocmd BufEnter *.sh setlocal shiftwidth=2
-    autocmd BufEnter *.sh setlocal softtabstop=2
+    autocmd BufEnter *.sh,*.tf setlocal tabstop=2
+    autocmd BufEnter *.sh,*.tf setlocal shiftwidth=2
+    autocmd BufEnter *.sh,*.tf setlocal softtabstop=2
     autocmd BufEnter *.py setlocal tabstop=4
     autocmd BufEnter *.md setlocal ft=markdown
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
 augroup END
 " }}}
-" Open in the browser {{{
+
+" Open in the browser: {{{
 let g:netrw_browsex_viewer = "open"
 " }}}
-" Testing {{{
+
+" Testing: {{{
 let test#strategy = 'neovim'  " run in a small terminal
 let test#python#runner = 'nose'
 " }}}
-" Backups {{{
+
+" Backups: {{{
 if !has("gui_win32")
     set backup
     set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -254,7 +301,8 @@ if !has("gui_win32")
     set writebackup
 endif
 " }}}
-" Custom Functions {{{
+
+" Custom Functions: {{{
 function! <SID>ToggleNumber()
     if(&relativenumber == 1)
         set norelativenumber

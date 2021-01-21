@@ -1,123 +1,86 @@
 #! /bin/sh
 
 data_dir=$HOME/.data
+DATA_DIR=$HOME/.data
+
+replace_file() {
+    if [ -f "$1" ]; then
+        rm "$1" && touch "$1"
+    else
+        touch "$1"
+    fi
+}
+
+install_git_remote() {
+    remote=$1
+    username=$2
+    echo "Please make sure that your SSH keys are up to date with $remote (username: $username)"
+    data=$DATA_DIR/$remote
+    remotedir=$HOME/$remote
+
+    if ! [ -d "$remotedir" ]; then
+        mkdir "$remotedir"
+    fi
+
+    if [ -f "$data" ]; then
+        curdir=$(pwd)
+        cd "$remotedir" || return
+        logfile=/tmp/${remote}_clone.log
+        while read -r prj; do
+            echo "Cloning ${prj}..."
+            git clone "$prj" >> "$logfile"
+            echo "Finished cloning ${prj}..."
+       done < "$data"
+       cd "$curdir" || return
+    else
+       echo "$data does not exist. Cannot install srht projects."
+    fi
+}
+
+collect_git_repos() {
+    repodir=$1
+    datafile=$2
+
+    for pkg in "$repodir"/*; do
+        if [ -d "$repodir/$pkg/.git" ]; then
+            git --git-dir "$repodir/$pkg/.git" remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> "$datafile"
+        fi
+    done
+}
+
+update_git_remote() {
+    remote=$1
+    echo "Updating $remote data..."
+    data=$DATA_DIR/${remote}data
+
+    replace_file "$data"
+
+    gitdir=$HOME/$remote
+    collect_git_repos "$gitdir" "$data"
+}
 
 install_srht_data() {
-   echo "Please make sure that your SSH keys are up to date with sr.ht/~sea_wulf"
-   srht_data=$data_dir/srhtdata 
-   srhtdir=$HOME/srht
-
-   if ! [[ -d $srhtdir ]]; then
-       mkdir $srhtdir
-   fi
-
-   if [[ -f $srht_data ]]; then
-       curdir=$(pwd)
-       cd $srhtdir
-       for prj in $(cat $srht_data); do
-            git clone $prj
-       done
-       cd $curdir
-   else
-       echo "$srht_data does not exist. Cannot install srht projects."
-   fi
+    install_git_remote "srht" "sea_wulf"
 }
 
 update_srht_data() {
-    echo "Updating srht data..."
-    srht_data=$data_dir/srhtdata
-    if [[ -f $srht_data ]]; then
-        rm $srht_data && touch $srht_data
-    else
-        touch $srht_data
-    fi
-
-    srhtdir=$HOME/gitlab
-    for pkg in $(ls $srhtdir); do
-        if [[ -d $srhtdir/$pkg/.git ]]; then
-            git --git-dir $srhtdir/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $srht_data
-        fi
-    done
+    update_git_remote "srht"
 }
 
-
 install_gitlab_data() {
-   echo "Please make sure that your SSH keys are up to date with gitlab.com/jandersen7"
-   gitlab_data=$data_dir/gitlabdata 
-   gldir=$HOME/gitlab
-
-   if ! [[ -d $gldir ]]; then
-       mkdir $gldir
-   fi
-
-   if [[ -f $gitlab_data ]]; then
-       curdir=$(pwd)
-       cd $gldir
-       for prj in $(cat $gitlab_data); do
-            git clone $prj
-       done
-       cd $curdir
-   else
-       echo "$gitlab_data does not exist. Cannot install gitlab projects."
-   fi
-
+    install_git_remote "gitlab" "jandersen7"
 }
 
 update_gitlab_data() {
-    echo "Updating gitlab data..."
-    gitlab_data=$data_dir/gitlabdata
-    if [[ -f $gitlab_data ]]; then
-        rm $gitlab_data && touch $gitlab_data
-    else
-        touch $gitlab_data
-    fi
-
-    gldir=$HOME/gitlab
-    for pkg in $(ls $gldir); do
-        if [[ -d $gldir/$pkg/.git ]]; then
-            git --git-dir $gldir/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $gitlab_data
-        fi
-    done
+    update_git_remote "gitlab"
 }
 
-
 install_github_data() {
-   echo "Please make sure that your SSH keys are up to date with github.com/jandersen7"
-   github_data=$data_dir/githubdata 
-   ghdir=$HOME/github
-
-   if ! [[ -d $ghdir ]]; then
-       mkdir $ghdir
-   fi
-
-   if [[ -f $github_data ]]; then
-       curdir=$(pwd)
-       cd $ghdir
-       for prj in $(cat $github_data); do
-            git clone $prj
-       done
-       cd $curdir
-   else
-       echo "$github_data does not exist. Cannot install github projects."
-   fi
+    install_git_remote "github" "havulv"
 }
 
 update_github_data() {
-
-    echo "Updating github data..."
-    github_data=$data_dir/githubdata
-    if [[ -f $github_data ]]; then
-        rm $github_data && touch $github_data
-    else
-        touch $github_data
-    fi
-
-    ghdir=$HOME/github
-    for pkg in $(ls $ghdir); do
-        if [[ -d $ghdir/$pkg/.git ]]; then
-            git --git-dir $ghdir/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $github_data
-        fi
-    done
+    update_git_remote "github"
 }
 
 update_vim_data() {
@@ -125,16 +88,11 @@ update_vim_data() {
         echo "Updating vim data..."
         vim_data=$data_dir/vimdata
 
-        if [[ -f $vim_data ]]; then
-            rm $vim_data && touch $vim_data
-        else
-            touch $vim_data
-        fi
+        replace_file "$vim_data"
 
         vim_bundle=$HOME/.vim/bundle
-        for pkg in $(ls $vim_bundle); do
-            git --git-dir $vim_bundle/$pkg/.git remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> $vim_data
-        done
+
+        collect_git_repos "$vim_bundle" "$vim_data"
     else
         echo "Vim not installed."
     fi
@@ -146,19 +104,21 @@ install_vim_data() {
        vim_data=$data_dir/vimdata 
        vim_bundle=$HOME/.vim/bundle
 
-       if [[ -f $vim_data ]]; then
-           if [[ -d $vim_bundle ]]; then
+       if [ -f "$vim_data" ]; then
+           if [ -d "$vim_bundle" ]; then
                echo "Note -- this is a straight clone. If any vim plugins have submodules, YOU are responsible for using \`--recursive\`"
                curdir=$(pwd)
-               cd $vim_bundle
-               for bundle in $(cat $vim_data); do
-                   if ! [[ -d "$vim_bundle/$(basename $bundle)" || -d "$vim_bundle/$(basename $bundle | cut -d '.' -f1)" ]]; then
-                       git clone $bundle
+               cd "$vim_bundle" || return
+                while read -r bundle; do
+                   if ! [ -d "$vim_bundle/$(basename "$bundle")" ] \
+                       || [ -d "$vim_bundle/$(basename "$bundle" | cut -d '.' -f1)" ]; then
+                       git clone "$bundle"
                    else
                        echo "This vim plugin already exists."
                    fi
-               done
-               cd $curdir
+               done < "$vim_data"
+
+               cd "$curdir" || return
            else
                echo "It looks like Vim was improperly installed. $vim_bundle does not exist."
            fi
@@ -166,7 +126,7 @@ install_vim_data() {
            echo "$vim_data does not exist. Cannot install vim packages."
        fi
     else
-        if [[ "$(uname -s)" == "Darwin" ]]; then
+        if [ "$(uname -s)" = "Darwin" ]; then
             if ! hash brew ; then
                 brew install vim
             else 
@@ -180,38 +140,52 @@ install_vim_data() {
     fi
 }
 
+check_pip3_installation() {
+    PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
+    PIP3=False
+
+    if [ "$(echo "$PIP_VERSION" | cut -d '.' -f1)" = "2" ]; then
+        if hash pip3; then
+            PIP3=True
+        else
+            echo "WARN: Python 3.X is not installed. Run \'update pip2\' to record packages."
+            return 1
+        fi
+    elif [ "$(echo "$PIP_VERSION" | cut -d '.' -f1)" = "3" ]; then
+        PIP3=False
+    fi
+}
+
+check_pip2_installation() {
+    PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
+    PIP2=False
+
+    if [ "$(echo "$PIP_VERSION" | cut -d '.' -f1)" = "2" ]; then
+        PIP2=False
+    elif [ "$(echo "$PIP_VERSION" | cut -d '.' -f1)" = "3" ]; then
+        if hash pip2 > /dev/null 2>&1 ; then
+            PIP2=True
+        else
+            echo "Python 2.X is not installed. Run \`update pip\` to record packages."
+            return 1
+        fi
+    fi
+}
 
 update_pip_data() {
     if hash pip ; then
-        PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
-        PIP3=False
-
-        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
-            if hash pip3; then
-                PIP3=True
-            else
-                echo "Python 3.X is not installed. Run \'update pip2\' to record packages."
-                return 1
-            fi
-        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            PIP3=False
-        fi
-
+        check_pip3_installation
 
         echo "Updating pip data..."
 
         pip_data=$data_dir/pipdata
 
-        if [[ -f $pip_data ]]; then
-            rm $pip_data && touch $pip_data
-        else
-            touch $pip_data
-        fi
+        replace_file "$pip_data"
 
-        if [[ "$PIP3" == True ]]; then
-            pip3 list --format freeze >> $pip_data
+        if [ "$PIP3" = "True" ]; then
+            pip3 list --format freeze >> "$pip_data"
         else
-            pip list --format freeze >> $pip_data
+            pip list --format freeze >> "$pip_data"
         fi
     else
         echo "pip not installed."
@@ -220,27 +194,24 @@ update_pip_data() {
 
 
 install_pip_data() {
+    if [ -z "$NO_RECURSE" ]; then
+        NO_RECURSE=0
+    elif [ $NO_RECURSE -gt 1 ]; then
+        # Don't recurse past once
+        # indicates that pacman failed to install pip
+        return
+    fi
+
     if hash pip ; then
-        PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
+        check_pip3_installation
+
         pip_data=$data_dir/pipdata
-        PIP3=False
 
-        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
-            if hash pip3; then
-                PIP3=True
+        if [ -f "$pip_data" ]; then
+            if [ "$PIP3" = "True" ]; then
+                pip3 install -r "$pip_data"
             else
-                echo "Python 3.X is not installed. Run \'install pip2\' to install packages."
-                return 1
-            fi
-        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            PIP3=False
-        fi
-
-        if [[ -f $pip_data ]]; then
-            if [[ "$PIP3" == "True" ]]; then
-                pip3 install -r $pip_data
-            else
-                pip install -r $pip_data
+                pip install -r "$pip_data"
             fi
         else
             echo "$pip_data does not exist. Cannot install pip packages."
@@ -248,41 +219,29 @@ install_pip_data() {
     else
         pacman -Syu --noconfirm python-pip
         install_pip_data
+        NO_RECURSE=$((NO_RECURSE + 1))
     fi
 }
 
 
 update_pip2_data() {
     if hash pip ; then
-        PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
-        PIP2=False
-
-        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
-            PIP2=False
-        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            if hash pip2 > /dev/null 2>&1 ; then
-                pip2=True
-            else
-                echo "Python 2.X is not installed. Run \`update pip\` to record packages."
-                return 1
-            fi
-        fi
-
+        check_pip2_installation
 
         echo "Updating pip data..."
 
         pip_data=$data_dir/pip2data
 
-        if [[ -f $pip_data ]]; then
-            rm $pip_data && touch $pip_data
+        if [ -f "$pip_data" ]; then
+            rm "$pip_data" && touch "$pip_data"
         else
-            touch $pip_data
+            touch "$pip_data"
         fi
 
-        if [[ "$PIP2" == "True" ]]; then
-            pip2 list --format freeze >> $pip_data
+        if [ "$PIP2" = "True" ]; then
+            pip2 list --format freeze >> "$pip_data"
         else
-            pip list --format freeze >> $pip_data
+            pip list --format freeze >> "$pip_data"
         fi
     else
         echo "pip2 not installed."
@@ -292,28 +251,15 @@ update_pip2_data() {
 
 install_pip2_data() {
     if hash pip ; then
-        PIP_VERSION=$(pip --version | cut -d ' ' -f6 | cut -d ')' -f1)
+        check_pip2_installation
+
         pip_data=$data_dir/pip2data
-        PIP2=False
 
-        if [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "2" ]]; then
-            PIP2=False
-        elif [[ "$(echo $PIP_VERSION | cut -d '.' -f1)" == "3" ]]; then
-            if hash pip2 > /dev/null 2>&1 ; then
-                PIP2=True
+        if [ -f "$pip_data" ]; then
+            if [ "$PIP2" = "True" ]; then
+                pip2 install -r "$pip_data"
             else
-                echo "Python 2.X is not installed. Run \`install pip\` to install 3.X packages."
-                return 1
-            fi
-        fi
-
-
-        if [[ -f $pip_data ]]; then
-
-            if [[ "$PIP2" == "True" ]]; then
-                pip2 install -r $pip_data
-            else
-                pip install -r $pip_data
+                pip install -r "$pip_data"
             fi
         else
             echo "$pip_data does not exist. Cannot install pip packages."
@@ -324,20 +270,12 @@ install_pip2_data() {
     fi
 }
 
-
-
 update_yay_data() {
     if hash yay ; then
         echo "Updating yay data..."
         yay_data=$data_dir/yaydata
-
-        if [[ -f $yay_data ]]; then
-            rm $yay_data && touch $yay_data
-        else
-            touch $yay_data
-        fi
-
-        yay -Q >> $yay_data
+        replace_file "$yay_data"
+        yay -Q >> "$yay_data"
     else
         echo "yay not installed."
     fi
@@ -347,15 +285,15 @@ update_yay_data() {
 install_yay_data() {
     if hash yay ; then
         yay_data=$data_dir/yaydata
-        if [[ -f $yay_data ]]; then
+        if [ -f "$yay_data" ]; then
             cur_installed=$(yay -Q | cut -d ' ' -f1)
-            for pkg in $(cat $yay_data); do
+            while read -r pkg; do
                 name=$($pkg | cut -d ' ' -f1)
                 version=$($pkg | cut -d ' ' -f2)
 
                 installed=False
                 for cur_pkg in $cur_installed; do
-                    if [[ "$cur_pkg" == "$name" ]]; then
+                    if [ "$cur_pkg" = "$name" ]; then
                         installed=True
                     fi
                 done
@@ -363,9 +301,9 @@ install_yay_data() {
                 if ! $installed ; then
                     # Arch is a rolling release so you really `shouldn't`
                     # specify the version
-                    yay -Syu --noconfirm $name
+                    yay -Syu --noconfirm "$name"
                 fi
-            done
+            done < "$yay_data"
         else
             echo "$yay_data does not exist. Cannot install yay packages."
         fi
@@ -378,18 +316,12 @@ install_yay_data() {
 }
 
 update_brew_data() {
-    if [[ "$(uname -s)"  == "Darwin" ]]; then
+    if [ "$(uname -s)"  = "Darwin" ]; then
         if hash brew ; then
             echo "Updating brew data..."
             brew_data=$data_dir/brewdata
-
-            if [[ -f $brew_data ]]; then
-                rm $brew_data && touch $brew_data
-            else
-                touch $brew_data
-            fi
-
-            brew list -1 --versions >> $brew_data
+            replace_file "$brew_data"
+            brew list -1 --versions >> "$brew_data"
         else
             echo "Brew not installed"
         fi
@@ -399,20 +331,20 @@ update_brew_data() {
 }
 
 install_brew_data() {
-    if [[ "$(uname -s)"  == "Darwin" ]]; then
+    if [ "$(uname -s)"  = "Darwin" ]; then
         if hash brew ; then
             brew_data=$data_dir/brewdata
 
-            if [[ -f $brew_data ]]; then
+            if [ -f "$brew_data" ]; then
                 cur_installed=$(brew list -1)
 
-                for pkg in $(cat $brew_data); do
+                while read -r pkg; do
                     name=$($pkg | cut -d ' ' -f1)
                     version=$($pkg | cut -d ' ' -f2)
 
                     installed=False
                     for cur_pkg in $cur_installed; do
-                        if [[ "$cur_pkg" == "$name" ]]; then
+                        if [ "$cur_pkg" = "$name" ]; then
                             installed=True
                         fi
                     done
@@ -420,7 +352,7 @@ install_brew_data() {
                     if ! $installed ; then
                         brew install "$name@$version"
                     fi
-                done
+                done < "$brew_data"
             else
                 echo "$brew_data does not exist. Cannot install brew formulae."
             fi
@@ -519,28 +451,28 @@ install_all() {
     install_srht_data
 }
 
-if [[ -d $data_dir ]]; then
-    if [[ $# -eq 0 ]]; then
+if [ -d "$data_dir" ]; then
+    if [ $# -eq 0 ]; then
         update_all
     else
         case $1 in 
             "update")
-                if [[ $# -gt 1 ]]; then
-                    select_update $2
+                if [ $# -gt 1 ]; then
+                    select_update "$2"
                 else
                     update_all
                 fi
                 ;;
             "init")
-                if [[ $# -gt 1 ]]; then
-                    select_install $2
+                if [ $# -gt 1 ]; then
+                    select_install "$2"
                 else
                     install_all
                 fi
                 ;;
             "install")
-                if [[ $# -gt 1 ]]; then
-                    select_install $2
+                if [ $# -gt 1 ]; then
+                    select_install "$2"
                 else
                     install_all
                 fi

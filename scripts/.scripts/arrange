@@ -1,4 +1,26 @@
 #! /usr/bin/bash
 
-# TODO: make this a useable script
-xrandr --output eDP1 --below DP1 --auto
+# fetch the active displays that are connected
+if ! hash xrandr ; then
+    echo "Xrandr is not installed. Is this machine using the X display manager?"
+    return 1
+fi
+
+maybe_displays=$(xrandr | grep " connected " | cut -d ' ' -f1 | tr '\n' ' ')
+
+# read the displays into an array
+IFS=' ' read -r -a displays <<< "$maybe_displays"
+
+if [[ ${#displays[@]} -eq 1 ]]; then
+    echo "Only one display detected. No need for arrangement."
+    return 0
+elif [[ ${#displays[@]} -gt 2 ]]; then
+    # if we have more than two than delegate to the user for now
+    # TODO: handle 3 displays with a laptop
+    echo "More than two displays detected. Please configure them manaully."
+    return 1
+fi
+
+# TODO set default configuration via config settings instead of guessing
+# Assume that the first display listed is the central one
+xrandr --output "${displays[0]}" --below "${displays[1]}" --auto

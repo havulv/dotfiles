@@ -84,15 +84,13 @@ task/*
 
 # Ignore most of minikube except config
 k8s/.minikube/*
-!k8s/.minikube/config
-k8s/.minikube/config/*
-!k8s/.minikube/config/config.json
 
 # Ignore kubectl config files -- sensitivio
 kube/.kube/**
 
 # Ignore secrets
 env/.env
+env/
 
 # Ignore aws config as this could leak info
 aws/.aws/config
@@ -112,7 +110,7 @@ terraform/**
 
 # Kubernetes
 # Ignore the helm repositories file -- contains passwords
-config/.config/helm/repositories.yaml
+config/.config/helm/**
 
 # Wireguard
 # VPN keys that should be ignored -- be careful to name these correctly!
