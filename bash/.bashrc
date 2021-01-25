@@ -1,4 +1,4 @@
-#
+#! /bin/bash
 # ~/.bashrc
 #
 
@@ -8,6 +8,8 @@
 if [[ "$(uname -s)" == "Linux" ]]; then
     alias ls='ls --color=auto'
     PS1='[\u@\h \W]\$ '
+elif [[ "$(uname -s)" == "Darwin" ]]; then
+    alias python="/usr/local/opt/python@3.7/bin/python3.7"
 fi
 
 # export MPD_HOST="/run/mpd/socket"
@@ -21,7 +23,14 @@ export PATH="${PATH}:${HOME}/.go/bin/"
 
 # Add scripts to the bash env
 # shellcheck disable=SC1090
-source "$(which virtualenvwrapper.sh)"
+source "$(type -p virtualenvwrapper.sh)"
+
+# If rvm is available source the scripts for ruby management
+if [[ -f "$HOME/.rvm/scripts/rvm" ]]; then
+    # shellcheck source=$HOME/.rvm/scripts/rvm
+    # shellcheck disable=SC1091
+    source "$HOME/.rvm/scripts/rvm"
+fi
 
 # Add special go paths -- I know it is not idiomatic,
 # but I don't operate that way google. `\_(-_-)_/`
@@ -67,3 +76,6 @@ if hash wal 2> /dev/null ; then
         wal -Rneq
     fi
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
