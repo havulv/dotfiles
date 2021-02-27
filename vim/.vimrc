@@ -59,6 +59,8 @@ map tt <C-]>
 " -- directories. Might enable this if it gets better
 " nnoremap <leader>ac :call deoplete#disable()
 
+" execute deoplete#enable()
+"
 " -- deoplete is too slow at this point for large
 " -- directories. Might enable this if it gets better
 " execute deoplete#enable()
@@ -165,6 +167,9 @@ nnoremap <leader>gti :GoTest! -tags=integration<CR>
 nnoremap <leader>gtf :GoTestFunc!<CR>
 nnoremap <leader>gc :GoMetaLinter!<CR>
 
+" Fix imports by default
+let g:go_fmt_command = "goimports"
+
 " Visual mode
 vnoremap <leader>gd :GoDoc<CR>
 vnoremap <leader>gbr :GoDocBrowser<CR>
@@ -256,8 +261,7 @@ let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " Syntastic Python: {{{
 " In general, I would like to use pylint but there are too many egregious
 " errors rn
-let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_python_flake8_args='--ignore=E501,N813,W504'
+let g:syntastic_python_checkers = ["flake8", "mypy"]
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
@@ -265,23 +269,52 @@ let g:syntastic_python_python_exec = 'python3'
 let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "golint", "golangci-lint" ]
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
+" Syntastic Shellcheck (bash) {{{
+" -x follows `source` directives even when the file is not specified as input,
+" meaning that shellcheck can check any file to be sourced.
+let g:syntastic_sh_shellcheck_args = "-x"
+" }}}
 " }}}
 
 " AutoGroups: {{{
 augroup configgroup
     autocmd!
     autocmd VimEnter * highlight clear SignColumn
-    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb :call <SID>StripTrailingWhitespaces()
+    autocmd BufWritePre *.php,*.ts,*.py,*.js,*.txt,*.hs,*.java,*.md,*.rb :call <SID>StripTrailingWhitespaces()
     autocmd BufEnter *.cls setlocal filetype=java
     autocmd BufEnter *.zsh-theme setlocal filetype=zsh
     autocmd BufEnter Makefile setlocal noexpandtab
+
     autocmd BufEnter *.sh,*.tf setlocal tabstop=2
     autocmd BufEnter *.sh,*.tf setlocal shiftwidth=2
     autocmd BufEnter *.sh,*.tf setlocal softtabstop=2
+
+    autocmd BufEnter *.ts setlocal tabstop=2
+    autocmd BufEnter *.ts setlocal softtabstop=2
+    autocmd BufEnter *.ts setlocal shiftwidth=2
+
+    autocmd BufEnter *.tsx setlocal tabstop=2
+    autocmd BufEnter *.tsx setlocal softtabstop=2
+    autocmd BufEnter *.tsx setlocal shiftwidth=2
+
+    autocmd BufEnter *.scss setlocal tabstop=2
+    autocmd BufEnter *.scss setlocal softtabstop=2
+    autocmd BufEnter *.scss setlocal shiftwidth=2
+
+    autocmd BufEnter *.json setlocal tabstop=2
+    autocmd BufEnter *.json setlocal softtabstop=2
+    autocmd BufEnter *.json setlocal shiftwidth=2
+    autocmd BufEnter *.py setlocal tabstop=4
+
     autocmd BufEnter *.py setlocal tabstop=4
     autocmd BufEnter *.md setlocal ft=markdown
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
+augroup END
+
+augroup pythongroup
+    autocmd!
+    " autocmd BufWritePre *.py execute ':Black'
 augroup END
 " }}}
 
