@@ -24,3 +24,5 @@
     path = ~/.gitconfig_sea
 [includeIf "gitdir:~/.dotfiles/"]
     path = ~/.gitconfig_sea
+[init]
+	defaultBranch = root

@@ -47,8 +47,9 @@ let g:gutentags_ctags_extra_args = [
     \ '--tag-relative=yes',
     \ '--fields=+ailmnS',
     \ ]
-" }}}
 
+map tt <C-]>
+" }}}
 " Deoplete: {{{
 " execute deoplete#enable()
 " Deoplete is really fucking with my shit
@@ -157,6 +158,7 @@ nnoremap <leader>gbr :GoDocBrowser<CR>
 nnoremap <leader>gl :GoLint<CR>
 nnoremap <leader>gf :GoFmt<CR>
 nnoremap <leader>gi :GoInfo<CR>
+nnoremap <leader>gt :GoTest!<CR>
 nnoremap <leader>gta :GoTest! -tags=all<CR>
 nnoremap <leader>gtu :GoTest! -tags=unit<CR>
 nnoremap <leader>gti :GoTest! -tags=integration<CR>
@@ -260,7 +262,7 @@ let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
 " Syntastic Go: {{{
-let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "golint" ]
+let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "golint", "golangci-lint" ]
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
 " }}}

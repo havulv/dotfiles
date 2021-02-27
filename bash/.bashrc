@@ -25,7 +25,7 @@ source "$(which virtualenvwrapper.sh)"
 
 # Add special go paths -- I know it is not idiomatic,
 # but I don't operate that way google. `\_(-_-)_/`
-export GOPATH=$HOME/.go/
+export GOPATH=$HOME/.go
 
 # Less does not like symlinks, so the the history file needs to
 # be pointed at directly
@@ -54,16 +54,16 @@ if hash wal 2> /dev/null ; then
         if [[ "$(uname -s)" == "Darwin" ]]; then
             wallpaper_path=$(osascript -e 'tell app "finder" to get posix path of (get desktop picture as alias)' | sed s+.dotfiles/wallpaper/++)
             if [[ "$wallpaper_path" != "$(jq '.wallpaper' "$HOME/.cache/wal/colors.json" | tr -d '"')" ]]; then
-                wal -R
+                wal -R --vte
             else
-                wal -R -n
+                wal -R -n --vte
             fi
         else
-            wal -R
+            wal -R --vte
         fi
     else
         # Skip setting the background and reloading the wm
         # This should only load the color scheme for the terminal
-        wal -Rneq
+        wal -Rneq --vte
     fi
 fi
