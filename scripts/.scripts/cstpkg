@@ -3,14 +3,6 @@
 data_dir=$HOME/.data
 DATA_DIR=$HOME/.data
 
-replace_file() {
-    if [ -f "$1" ]; then
-        rm "$1" && touch "$1"
-    else
-        touch "$1"
-    fi
-}
-
 install_git_remote() {
     remote=$1
     username=$2
@@ -42,8 +34,8 @@ collect_git_repos() {
     datafile=$2
 
     for pkg in "$repodir"/*; do
-        if [ -d "$repodir/$pkg/.git" ]; then
-            git --git-dir "$repodir/$pkg/.git" remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> "$datafile"
+        if [ -d "$pkg/.git" ]; then
+            git --git-dir "$pkg/.git" remote -v | awk -F ' ' '{print $2}' | sed -n '1p' >> "$datafile"
         fi
     done
 }
@@ -53,7 +45,7 @@ update_git_remote() {
     echo "Updating $remote data..."
     data=$DATA_DIR/${remote}data
 
-    replace_file "$data"
+    printf "" > "$data"
 
     gitdir=$HOME/$remote
     collect_git_repos "$gitdir" "$data"
@@ -88,7 +80,7 @@ update_vim_data() {
         echo "Updating vim data..."
         vim_data=$data_dir/vimdata
 
-        replace_file "$vim_data"
+        printf "" > "$vim_data"
 
         vim_bundle=$HOME/.vim/bundle
 
@@ -180,7 +172,7 @@ update_pip_data() {
 
         pip_data=$data_dir/pipdata
 
-        replace_file "$pip_data"
+        printf "" > "$pip_data"
 
         if [ "$PIP3" = "True" ]; then
             pip3 list --format freeze >> "$pip_data"
@@ -274,8 +266,8 @@ update_yay_data() {
     if hash yay ; then
         echo "Updating yay data..."
         yay_data=$data_dir/yaydata
-        replace_file "$yay_data"
-        yay -Q >> "$yay_data"
+        printf "" > "$yay_data"
+        yay -Qent >> "$yay_data"
     else
         echo "yay not installed."
     fi
@@ -320,7 +312,7 @@ update_brew_data() {
         if hash brew ; then
             echo "Updating brew data..."
             brew_data=$data_dir/brewdata
-            replace_file "$brew_data"
+            printf "" > "$brew_data"
             brew list -1 --versions >> "$brew_data"
         else
             echo "Brew not installed"

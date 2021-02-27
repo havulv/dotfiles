@@ -1,0 +1,15 @@
+ssh://git@github.com/tpope/vim-fugitive.git
+ssh://git@github.com/junegunn/fzf.vim
+ssh://git@github.com/govim/govim.git
+ssh://git@github.com/junegunn/goyo.vim.git
+ssh://git@github.com/scrooloose/nerdtree.git
+ssh://git@github.com/powerline/powerline.git
+ssh://git@github.com/tpope/vim-surround
+ssh://git@github.com/vim-syntastic/syntastic.git
+ssh://git@github.com/tbabej/taskwiki
+ssh://git@github.com/janko/vim-test
+git://github.com/tpope/vim-abolish.git
+ssh://git@github.com/fatih/vim-go.git
+ssh://git@github.com/ludovicchabant/vim-gutentags.git
+ssh://git@github.com/vimwiki/vimwiki.git
+ssh://git@github.com/alx741/vinfo.git
