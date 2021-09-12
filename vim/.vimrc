@@ -184,6 +184,7 @@ let g:go_fmt_command = 'goimports'
 " use golangci-lint for linting
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_deadline = "10s"
+let g:go_metalinter_command = "golangci-lint"
 " Debug
 " let g:go_debug=['shell-commands']
 
