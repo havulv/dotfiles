@@ -267,7 +267,7 @@ let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
 " Syntastic Go: {{{
-let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "golint", "golangci-lint" ]
+let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "revive", "golangci-lint" ]
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
 " Syntastic Shellcheck (bash) {{{

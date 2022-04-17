@@ -63,17 +63,17 @@ if hash wal 2> /dev/null ; then
         if [[ "$(uname -s)" == "Darwin" ]]; then
             wallpaper_path=$(osascript -e 'tell app "finder" to get posix path of (get desktop picture as alias)' | sed s+.dotfiles/wallpaper/++)
             if [[ "$wallpaper_path" != "$(jq '.wallpaper' "$HOME/.cache/wal/colors.json" | tr -d '"')" ]]; then
-                wal -R --vte
+                wal -R --vte 2> /dev/null
             else
-                wal -R -n --vte
+                wal -R -n --vte 2> /dev/null
             fi
         else
-            wal -R --vte
+            wal -R --vte 2> /dev/null
         fi
     else
         # Skip setting the background and reloading the wm
         # This should only load the color scheme for the terminal
-        wal -Rneq --vte
+        wal -Rneq --vte 2> /dev/null
     fi
 fi
 
@@ -81,3 +81,7 @@ alias k=kubectl
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# BEGIN_KITTY_SHELL_INTEGRATION
+if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
+# END_KITTY_SHELL_INTEGRATION

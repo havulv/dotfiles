@@ -13,12 +13,14 @@ IFS=' ' read -r -a displays <<< "$maybe_displays"
 
 if [[ ${#displays[@]} -eq 1 ]]; then
     echo "Only one display detected. No need for arrangement."
-    return 0
+    exit 0
 elif [[ ${#displays[@]} -gt 2 ]]; then
     # if we have more than two than delegate to the user for now
     # TODO: handle 3 displays with a laptop
-    echo "More than two displays detected. Please configure them manaully."
-    return 1
+    xrandr --output "${displays[0]}" --auto \
+        --output "${displays[2]}" --auto --above "${displays[0]}" \
+        --output "${displays[1]}" --auto --right-of "${displays[2]}"
+    exit 0
 fi
 
 # TODO set default configuration via config settings instead of guessing
