@@ -72,6 +72,7 @@ config/.config/dconf/user
 config/.config/yarn/
 node/.node_repl_history
 yarn/.yarn/
+config/.config/nextjs-nodejs
 
 # Docker login details
 docker/
@@ -94,6 +95,9 @@ env/
 # Ignore aws config as this could leak info
 aws/.aws/config
 aws/.saml2aws
+
+# Ignore gcloud creds
+config/.config/gcloud/
 
 # Don't ignore the folder, just the directory
 !OSX

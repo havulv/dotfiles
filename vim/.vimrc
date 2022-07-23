@@ -150,6 +150,20 @@ nnoremap <leader>ez :vsp ~/.bashrc<CR>
 nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 " }}}
 
+" ALE Config {{{
+" let g:ale_linters = {'rust': ['analyzer', 'rustc', 'cargo', 'rustfmt']}
+" let b:ale_rust_cargo_use_check = 1
+" let g:ale_rust_cargo_use_clippy = 1
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+" let g:ale_open_list = 1
+" }}}
+
+" Rust {{{
+" Format on autosave
+let g:rustfmt_autosave = 1
+" }}}
+
 " Golang: {{{
 
 " Vim-Go: {{{
@@ -203,6 +217,7 @@ call govim#config#Set("GoImportsLocalPrefix", trim(
             \ expand('%:p:h')),
     \ "\.dotfiles\/go\/", "", "") .
     \ ' && go list -m;')))
+" }}}
 " }}}
 
 " Testing: {{{
@@ -259,6 +274,7 @@ let g:ctrlp_custom_ignore = '\vbuild/|dist/|venv/|target/|\.(o|swp|pyc|egg)$'
 " }}}
 
 " Syntastic: {{{
+
 " Syntastic Python: {{{
 " In general, I would like to use pylint but there are too many egregious
 " errors rn
@@ -266,14 +282,23 @@ let g:syntastic_python_checkers = ["flake8", "mypy"]
 let g:syntastic_ignore_files = ['.java$']
 let g:syntastic_python_python_exec = 'python3'
 " }}}
+
 " Syntastic Go: {{{
 let g:syntastic_go_checkers = [ "go", "gofmt", "govet", "revive", "golangci-lint" ]
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 " }}}
+
 " Syntastic Shellcheck (bash) {{{
 " -x follows `source` directives even when the file is not specified as input,
 " meaning that shellcheck can check any file to be sourced.
 let g:syntastic_sh_shellcheck_args = "-x"
+" }}}
+
+" Syntastic Rust: {{{
+let g:syntastic_rust_checkers = ["cargo", "clippy"]
+let g:rust_cargo_check_examples = 1
+let g:rust_cargo_check_tests = 1
+" let g:syntastic_rust_clippy_post_args = ['--release', '--', '-Dclippy', '-Wclippy_pedantic']
 " }}}
 " }}}
 
@@ -302,13 +327,14 @@ augroup configgroup
     autocmd BufEnter *.scss setlocal softtabstop=2
     autocmd BufEnter *.scss setlocal shiftwidth=2
 
-    autocmd BufEnter *.json setlocal tabstop=2
-    autocmd BufEnter *.json setlocal softtabstop=2
-    autocmd BufEnter *.json setlocal shiftwidth=2
+    autocmd BufEnter *.json,*.md setlocal tabstop=2
+    autocmd BufEnter *.json,*.md setlocal softtabstop=2
+    autocmd BufEnter *.json,*.md setlocal shiftwidth=2
     autocmd BufEnter *.py setlocal tabstop=4
 
     autocmd BufEnter *.py setlocal tabstop=4
     autocmd BufEnter *.md setlocal ft=markdown
+    autocmd BufEnter *.md setlocal textwidth=81
     autocmd BufEnter *.go setlocal noexpandtab
     autocmd BufEnter *.avsc setlocal ft=json
 augroup END
