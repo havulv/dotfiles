@@ -151,6 +151,7 @@ nnoremap <leader>c :SyntasticCheck<CR>:Errors<CR>
 " }}}
 
 " ALE Config {{{
+let g:ale_enabled = 0
 " let g:ale_linters = {'rust': ['analyzer', 'rustc', 'cargo', 'rustfmt']}
 " let b:ale_rust_cargo_use_check = 1
 " let g:ale_rust_cargo_use_clippy = 1

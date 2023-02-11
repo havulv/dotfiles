@@ -2,6 +2,9 @@
 # ~/.bashrc
 #
 
+# Ensure that ssh-add and can talk to the ssh-agent socket
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -20,6 +23,9 @@ export PATH="${PATH}:${HOME}/.local/bin/:${HOME}/.scripts/:/usr/bin/python"
 
 # Add go binaries to path
 export PATH="${PATH}:${HOME}/.go/bin/"
+
+# Add rust binaries to PATH
+export PATH="${PATH}:${HOME}/.cargo/bin/"
 
 # Add scripts to the bash env
 # shellcheck disable=SC1090

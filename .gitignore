@@ -15,7 +15,10 @@ wiki/
 sound/
 python/
 local/
-vim/.vim/
+vim/.vim/*
+# Allow for colors to be uploaded
+!vim/.vim/
+!vim/.vim/colors
 
 # Allow the custom configurations
 # for firefox that are sym linked to the
@@ -71,7 +74,7 @@ config/.config/dconf/user
 # Ignore node stuff
 config/.config/yarn/
 node/.node_repl_history
-yarn/.yarn/
+yarn/.yarn
 config/.config/nextjs-nodejs
 
 # Docker login details
